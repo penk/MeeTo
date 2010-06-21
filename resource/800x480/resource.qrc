@@ -1,0 +1,19 @@
+<RCC>
+<qresource>
+    <file>main.qml</file>
+    <file>Toolbar.qml</file>
+    <file>MainBar.qml</file>
+    <file>images/inputtext.png</file>
+    <file>images/inputtext_progress.png</file>
+    <file>images/shadow.png</file>
+    <file>images/bt_browser_back.png</file>
+    <file>images/bt_browser_forward.png</file>
+    <file>images/bt_browser_history.png</file>
+    <file>images/bt_browser_options.png</file>
+    <file>images/bt_browser_stop.png</file>
+    <file>images/bt_browser_reload.png</file>
+    <file>images/bt_taskbar_close.png</file>
+    <file>images/bt_taskbar_home.png</file>
+    <file>images/divisor.png</file>
+</qresource>
+</RCC>

@@ -17,6 +17,7 @@
 ****************************************************************************/
 
 #include "mainwindow.h"
+#include "pagemodel.h"
 
 #include <QApplication>
 #include <QWebSettings>
@@ -33,6 +34,13 @@ MainWindow::MainWindow()
     setFrameShape(QFrame::NoFrame);
 
     setupWebSettings();
+
+    PageModel *model = new PageModel(this);
+    model->add(QString(), QString());
+    model->add(QString(), QString());
+
+    QDeclarativeContext *context = engine.rootContext();
+    context->setContextProperty("tabModel", model);
 
     QDeclarativeComponent component(&engine, QUrl("qrc:/main.qml"));
     rootItem = qobject_cast<QDeclarativeItem *>(component.create());
@@ -57,6 +65,8 @@ void MainWindow::resizeEvent(QResizeEvent *event)
     rootItem->setWidth(width());
     rootItem->setHeight(height());
     setSceneRect(0, 0, width(), height());
+
+    QMetaObject::invokeMethod(rootItem, "resized");
 }
 
 void MainWindow::setupWebSettings()

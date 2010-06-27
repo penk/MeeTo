@@ -75,10 +75,7 @@ Rectangle {
             anchors.margins: 6
             font.family: "Nokia Sans"
             font.pixelSize: 22
-
-            onAccepted: {
-                toolbar.reloadClicked();
-            }
+            onAccepted: toolbar.reloadClicked();
         }
     }
 

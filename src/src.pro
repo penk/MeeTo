@@ -5,6 +5,7 @@ QT += webkit declarative
 
 HEADERS += mainwindow.h \
            scrollbar.h \
+           pagemodel.h \
            kineticscroll.h \
            mobilewebview.h \
            mobilewebpage.h
@@ -12,6 +13,7 @@ HEADERS += mainwindow.h \
 SOURCES += main.cpp \
            mainwindow.cpp \
            scrollbar.cpp \
+           pagemodel.cpp \
            kineticscroll.cpp \
            mobilewebview.cpp \
            mobilewebpage.cpp

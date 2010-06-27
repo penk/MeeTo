@@ -237,6 +237,11 @@ MobileWebView::~MobileWebView()
     delete dd;
 }
 
+QString MobileWebView::title() const
+{
+    return dd->webview->title();
+}
+
 QString MobileWebView::url() const
 {
     return dd->webview->url().toString();

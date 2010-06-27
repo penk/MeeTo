@@ -28,6 +28,7 @@ class MobileWebViewPrivate;
 class MobileWebView : public QDeclarativeItem
 {
     Q_OBJECT
+    Q_PROPERTY(QString title READ title);
     Q_PROPERTY(QString url READ url WRITE setUrl);
     Q_PROPERTY(bool frozen READ isFrozen WRITE setFrozen);
     Q_PROPERTY(qreal zoomScale READ zoomScale WRITE setZoomScale);
@@ -36,6 +37,8 @@ class MobileWebView : public QDeclarativeItem
 public:
     MobileWebView(QDeclarativeItem *parent = 0);
     virtual ~MobileWebView();
+
+    QString title() const;
 
     QString url() const;
     void setUrl(const QString &url);

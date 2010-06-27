@@ -17,11 +17,11 @@
 ****************************************************************************/
 
 #include "mobilewebview.h"
+#include "mobilewebpage.h"
 #include "scrollbar.h"
 #include "kineticscroll.h"
 
 #include <QTimer>
-#include <QWebPage>
 #include <QWebFrame>
 #include <QApplication>
 #include <QGraphicsScene>
@@ -31,9 +31,6 @@
 
 #define CLICK_CONSTANT 15
 #define TILE_FROZEN_DELAY 100
-#define TILE_CREATION_DELAY 20
-#define TILE_SIZE QSize(256, 256)
-#define TILE_AREA_RANGE QSizeF(4.0, 4.0)
 #define FADE_SCROLL_TIMEOUT 1000
 #define MIN_ZOOM_SCALE 0.1
 #define MAX_ZOOM_SCALE 6.0
@@ -99,12 +96,7 @@ void MobileWebViewPrivate::init()
     webview->setResizesToContents(true);
     webview->setAttribute(Qt::WA_OpaquePaintEvent, true);
 
-    // setup tile settings
-    QWebPage *page = new QWebPage(q);
-    page->setProperty("_q_TiledBackingStoreTileSize", TILE_SIZE);
-    page->setProperty("_q_TiledBackingStoreKeepAreaMultiplier", TILE_AREA_RANGE);
-    page->setProperty("_q_TiledBackingStoreCoverAreaMultiplier", TILE_AREA_RANGE);
-    page->setProperty("_q_TiledBackingStoreTileCreationDelay", TILE_CREATION_DELAY);
+    MobileWebPage *page = new MobileWebPage(q);
     webview->setPage(page);
 
     timer.setSingleShot(true);

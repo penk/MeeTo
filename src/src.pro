@@ -6,13 +6,15 @@ QT += webkit declarative
 HEADERS += mainwindow.h \
            scrollbar.h \
            kineticscroll.h \
-           mobilewebview.h
+           mobilewebview.h \
+           mobilewebpage.h
 
 SOURCES += main.cpp \
            mainwindow.cpp \
            scrollbar.cpp \
            kineticscroll.cpp \
-           mobilewebview.cpp
+           mobilewebview.cpp \
+           mobilewebpage.cpp
 
 isEmpty(RESOLUTION) {
     RESOLUTION = "800x480"

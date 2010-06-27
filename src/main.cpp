@@ -24,6 +24,11 @@
 
 int main(int argc, char **argv)
 {
+#if defined(Q_WS_MAEMO_5)
+    // raster has better performance than native
+    QApplication::setGraphicsSystem("raster");
+#endif
+
     QApplication app(argc, argv);
     app.setApplicationName("raskbrowser");
 

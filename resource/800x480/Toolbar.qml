@@ -60,10 +60,11 @@ Rectangle {
 
         BorderImage {
             source: ":images/inputtext_progress.png"
-            /*width: input.width*/
+            /* XXX: use clip in the future when clip bug is fixed */
             width: Math.max(20, input.width * toolbar.progress)
             border.left: 10;
             border.right: 10;
+            visible: (width > 20);
         }
 
         TextInput {

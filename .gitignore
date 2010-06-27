@@ -2,6 +2,12 @@
 *.o
 *.moc
 *.inf
+*.pkg
+*.rpp
+*.rsc
+*.loc
+*.rss
+*.rsg
 Makefile
 qrc_*.cpp
 moc_*.cpp

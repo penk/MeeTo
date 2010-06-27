@@ -422,3 +422,26 @@ void MobileWebView::setZoomScale(qreal value)
         dd->webview->setScale(value);
     }
 }
+
+QPixmap MobileWebView::snapshot(int w, int h) const
+{
+    QImage result(w, h, QImage::Format_RGB32);
+
+    QPainter painter(&result);
+    painter.fillRect(result.rect(), Qt::white);
+
+    if (!dd->webview->url().isEmpty()) {
+        qreal scale = dd->webview->scale();
+
+        int ix = dd->webview->pos().x();
+        int iy = dd->webview->pos().y();
+
+        painter.translate(ix, iy);
+        painter.scale(scale, scale);
+
+        dd->webview->page()->mainFrame()->render(&painter, QWebFrame::ContentsLayer,
+                                                 QRegion(-ix / scale, -iy / scale, w / scale, h / scale));
+    }
+
+    return QPixmap::fromImage(result);
+}

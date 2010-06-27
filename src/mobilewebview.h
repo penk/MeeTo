@@ -54,6 +54,8 @@ public:
     Q_INVOKABLE void reload();
     Q_INVOKABLE void stop();
 
+    Q_INVOKABLE QPixmap snapshot(int w, int h) const;
+
 signals:
     void urlChanged();
     void loadFinished(bool ok);

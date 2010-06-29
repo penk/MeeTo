@@ -38,6 +38,7 @@ public:
     QPoint value;
     QPoint lastValue;
     bool isPressed;
+    QPoint direction;
 };
 
 
@@ -110,6 +111,9 @@ void KineticScroll::start(const QPointF &value)
     d->time = QTime::currentTime();
     d->accel = -d->speed * KINETIC_FRICTION;
 
+    d->direction = QPoint(d->speed.x() < 0 ? -1 : 1,
+                          d->speed.y() < 0 ? -1 : 1);
+
     d->timer.start(KINETIC_TICK_TIME);
 }
 
@@ -128,7 +132,8 @@ void KineticScroll::tick()
     const QPointF &speed = (d->speed + d->accel * dt);
     const QPoint &value = (d->speed * dt + d->accel * dt * dt / 2).toPoint();
 
-    if (value.isNull())
+    if (((value.x() >= 0 && d->direction.x() < 0) || (value.x() <= 0 && d->direction.x() > 0)) &&
+        ((value.y() >= 0 && d->direction.y() < 0) || (value.y() <= 0 && d->direction.y() > 0)))
         stop();
     else {
         d->speed = speed;

@@ -23,6 +23,10 @@
 #include <QWebSettings>
 #include <QDeclarativeContext>
 
+#ifdef USE_OPENGL
+#include <QGLWidget>
+#endif
+
 #define WEB_MAX_PAGES_IN_CACHE 5
 #define WEB_MAX_CACHE_SIZE ((16 * 1024 * 1024) / 8)
 
@@ -34,6 +38,10 @@ MainWindow::MainWindow()
     setFrameShape(QFrame::NoFrame);
 
     setupWebSettings();
+
+#ifdef USE_OPENGL
+    setViewport(new QGLWidget());
+#endif
 
     PageModel *model = new PageModel(this);
     model->add(QString(), QString());

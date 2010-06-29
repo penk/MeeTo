@@ -18,6 +18,11 @@ SOURCES += main.cpp \
            mobilewebview.cpp \
            mobilewebpage.cpp
 
+!isEmpty(USE_OPENGL) {
+    QT += opengl
+    DEFINES += USE_OPENGL=1
+}
+
 isEmpty(RESOLUTION) {
     RESOLUTION = "800x480"
 }

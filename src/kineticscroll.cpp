@@ -23,7 +23,7 @@
 #include <QPointF>
 
 #define MAX_SPEED 2000
-#define KINETIC_FRICTION 0.5
+#define KINETIC_FRICTION 0.9
 #define KINETIC_TICK_TIME 20
 
 

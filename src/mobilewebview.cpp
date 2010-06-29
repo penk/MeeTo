@@ -34,6 +34,7 @@
 #define FADE_SCROLL_TIMEOUT 1000
 #define MIN_ZOOM_SCALE 0.1
 #define MAX_ZOOM_SCALE 6.0
+#define DPI_ADJUSTMENT_SCALE 1.5
 
 
 class MobileWebViewPrivate
@@ -121,6 +122,8 @@ void MobileWebViewPrivate::init()
                      q, SLOT(onContentsSizeChanged(const QSize &)));
     QObject::connect(webview->page()->mainFrame(), SIGNAL(initialLayoutCompleted()),
                      q, SLOT(onInitialLayoutCompleted()));
+
+    webview->setScale(DPI_ADJUSTMENT_SCALE);
 }
 
 QRectF MobileWebViewPrivate::contentGeometry() const
@@ -398,7 +401,7 @@ void MobileWebView::geometryChanged(const QRectF &newGeometry,
     dd->kinetic->stop();
     dd->setContentPos(dd->webview->pos());
     // reconfigure preferred size
-    dd->webview->page()->setPreferredContentsSize(newGeometry.size().toSize());
+    dd->webview->page()->setPreferredContentsSize(newGeometry.size().toSize() / DPI_ADJUSTMENT_SCALE);
 }
 
 void MobileWebView::onFadeScrollTimeout()
@@ -416,7 +419,7 @@ void MobileWebView::setZoomScale(qreal value)
     value = qBound<qreal>(MIN_ZOOM_SCALE, value, MAX_ZOOM_SCALE);
 
     if (value != zoomScale()) {
-        dd->webview->setScale(value);
+        dd->webview->setScale(value * DPI_ADJUSTMENT_SCALE);
     }
 }
 

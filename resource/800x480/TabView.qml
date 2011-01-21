@@ -10,7 +10,7 @@ Item {
     property real finalScale : 0.6
 
     property string url : listview.currentItem.url
-    property variant current : listview.currentItem
+    property alias current : listview.currentItem
 
     Component {
         id: tabViewDelegate

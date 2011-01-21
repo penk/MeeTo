@@ -6,7 +6,6 @@ Rectangle {
     height: 480
     color: "#666666"
 
-    signal close();
     signal resized();
 
     TabView {

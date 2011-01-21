@@ -19,13 +19,11 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QGraphicsView>
-#include <QGraphicsScene>
 #include <QDeclarativeItem>
-#include <QDeclarativeEngine>
+#include <QDeclarativeView>
 
 
-class MainWindow : public QGraphicsView
+class MainWindow : public QDeclarativeView
 {
     Q_OBJECT
 
@@ -37,8 +35,6 @@ protected:
     void resizeEvent(QResizeEvent * event);
 
 private:
-    QGraphicsScene scene;
-    QDeclarativeEngine engine;
     QDeclarativeItem *rootItem;
 };
 

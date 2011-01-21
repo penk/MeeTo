@@ -21,6 +21,8 @@
 
 #include <QApplication>
 #include <QWebSettings>
+#include <QDeclarativeView>
+#include <QDeclarativeEngine>
 #include <QDeclarativeContext>
 
 #ifdef USE_OPENGL
@@ -32,11 +34,8 @@
 
 
 MainWindow::MainWindow()
-    : QGraphicsView()
+    : QDeclarativeView()
 {
-    setScene(&scene);
-    setFrameShape(QFrame::NoFrame);
-
     setupWebSettings();
 
 #ifdef USE_OPENGL
@@ -47,19 +46,16 @@ MainWindow::MainWindow()
     model->add(QString(), QString());
     model->add(QString(), QString());
 
-    QDeclarativeContext *context = engine.rootContext();
+    QDeclarativeContext *context = engine()->rootContext();
     context->setContextProperty("tabModel", model);
 
-    QDeclarativeComponent component(&engine, QUrl("qrc:/main.qml"));
-    rootItem = qobject_cast<QDeclarativeItem *>(component.create());
+    setSource(QUrl("qrc:/main.qml"));
+
+    rootItem = qobject_cast<QDeclarativeItem *>(rootObject());
 
     Q_ASSERT(rootItem);
 
-    scene.addItem(rootItem);
-    resize(rootItem->width(), rootItem->height());
-    setSceneRect(0, 0, rootItem->width(), rootItem->height());
-
-    connect(rootItem, SIGNAL(close()), qApp, SLOT(quit()));
+    connect(engine(), SIGNAL(quit()), qApp, SLOT(quit()));
 
 #if defined(Q_WS_MAEMO_5) && QT_VERSION >= QT_VERSION_CHECK(4, 6, 2)
     setAttribute(Qt::WA_Maemo5AutoOrientation, true);
@@ -68,11 +64,10 @@ MainWindow::MainWindow()
 
 void MainWindow::resizeEvent(QResizeEvent *event)
 {
-    QGraphicsView::resizeEvent(event);
+    QDeclarativeView::resizeEvent(event);
 
     rootItem->setWidth(width());
     rootItem->setHeight(height());
-    setSceneRect(0, 0, width(), height());
 
     QMetaObject::invokeMethod(rootItem, "resized");
 }

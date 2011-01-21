@@ -52,7 +52,7 @@ Item {
         width: tabViewItem.width
         height: tabViewItem.height
 
-        Image {
+        PixmapItem {
             id: snapshotPicture
             smooth: true
             anchors.fill: parent

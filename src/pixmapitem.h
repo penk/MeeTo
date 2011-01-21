@@ -16,33 +16,40 @@
 **
 ****************************************************************************/
 
-#include <QApplication>
+#ifndef PIXMAPITEM_H
+#define PIXMAPITEM_H
 
-#include "mainwindow.h"
-#include "pixmapitem.h"
-#include "mobilewebview.h"
+#include <QPixmap>
+#include <QDeclarativeItem>
 
-
-int main(int argc, char **argv)
+class PixmapItem : public QDeclarativeItem
 {
-#if defined(Q_WS_MAEMO_5)
-    // raster has better performance than native
-    QApplication::setGraphicsSystem("raster");
+    Q_OBJECT
+    Q_PROPERTY(bool smooth READ smooth WRITE setSmooth NOTIFY smoothChanged);
+    Q_PROPERTY(QPixmap pixmap READ pixmap WRITE setPixmap NOTIFY pixmapChanged);
+
+public:
+    PixmapItem(QDeclarativeItem *parent = 0);
+    virtual ~PixmapItem();
+
+    bool smooth() const;
+    void setSmooth(bool enabled);
+
+    QPixmap pixmap() const;
+    void setPixmap(const QPixmap &pixmap);
+
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
+               QWidget *widget = 0);
+
+signals:
+    void smoothChanged();
+    void pixmapChanged();
+
+private:
+    bool m_smooth;
+    QPixmap m_pixmap;
+};
+
+QML_DECLARE_TYPE(PixmapItem);
+
 #endif
-
-    QApplication app(argc, argv);
-    app.setApplicationName("raskbrowser");
-
-    qmlRegisterType<PixmapItem>("Openbossa", 1, 0, "PixmapItem");
-    qmlRegisterType<MobileWebView>("Openbossa", 1, 0, "MobileWebView");
-
-    MainWindow view;
-
-#if defined(Q_OS_SYMBIAN) || defined(Q_WS_MAEMO_5)
-    view.showFullScreen();
-#else
-    view.show();
-#endif
-
-    return app.exec();
-}

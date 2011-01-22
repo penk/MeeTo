@@ -34,7 +34,7 @@
 #define FADE_SCROLL_TIMEOUT 1000
 #define MIN_ZOOM_SCALE 0.1
 #define MAX_ZOOM_SCALE 6.0
-#define DPI_ADJUSTMENT_SCALE 1.5
+#define DPI_ADJUSTMENT_SCALE 1.0
 
 
 class MobileWebViewPrivate

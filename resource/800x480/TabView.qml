@@ -18,47 +18,50 @@ Item {
         TabViewItem {
             id: tabItem
             deletable: (tabModel.count > 1)
-            width: tabView.width * finalScale
-            height: (tabView.height + tabView.spareHeight) * finalScale
+
+            width: 300; height: 202;
+
+//            width: tabView.width * finalScale
+//            height: (tabView.height + tabView.spareHeight) * finalScale
 
             onRemoveClicked: tabModel.remove(index);
 
-            ListView.onRemove: SequentialAnimation {
-                PropertyAction { target: tabItem; property: "ListView.delayRemove"; value: true; }
+            GridView.onRemove: SequentialAnimation {
+                PropertyAction { target: tabItem; property: "GridView.delayRemove"; value: true; }
                 PropertyAction { target: blocker; property: "visible"; value: true; }
                 ScriptAction {
                     script: {
-                        ListView.view.snapMode = ListView.NoSnap;
-                        ListView.view.highlightRangeMode = ListView.NoHighlightRange;
+                        GridView.view.snapMode = GridView.NoSnap;
+                        GridView.view.highlightRangeMode = GridView.NoHighlightRange;
                     }
                 }
                 NumberAnimation { target: tabItem; property: "opacity"; to: 0.0; duration: 300; }
                 NumberAnimation { target: tabItem; property: "width"; to: 0; duration: 300; }
                 ScriptAction {
                     script: {
-                        ListView.view.snapMode = ListView.SnapOneItem;
-                        ListView.view.highlightRangeMode = ListView.StrictlyEnforceRange;
+                        GridView.view.snapMode = GridView.SnapOneItem;
+                        GridView.view.highlightRangeMode = GridView.StrictlyEnforceRange;
                     }
                 }
                 PropertyAction { target: blocker; property: "visible"; value: false; }
-                PropertyAction { target: tabItem; property: "ListView.delayRemove"; value: false; }
+                PropertyAction { target: tabItem; property: "GridView.delayRemove"; value: false; }
             }
         }
     }
 
-    ListView {
+    GridView {
         id: listview
-        spacing: 30
         anchors.fill: parent
-        anchors.topMargin: 12
-        anchors.leftMargin: parent.width * 0.2
-        orientation: "Horizontal"
+        cellWidth: 320; 
+        cellHeight: 222;
+
+        anchors.topMargin: -35
+        anchors.leftMargin: parent.width * 0.05
         cacheBuffer: 99999 /* keep tabs alive */
         model: tabModel
         delegate: tabViewDelegate
 
-        snapMode: ListView.SnapOneItem
-        highlightRangeMode: ListView.StrictlyEnforceRange
+        snapMode: GridView.SnapOneItem
     }
 
     MouseArea {

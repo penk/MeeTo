@@ -31,7 +31,7 @@ int main(int argc, char **argv)
 #endif
 
     QApplication app(argc, argv);
-    app.setApplicationName("raskbrowser");
+    app.setApplicationName("Version/5.0.2 Mobile/8C5101c");
 
     qmlRegisterType<PixmapItem>("Openbossa", 1, 0, "PixmapItem");
     qmlRegisterType<MobileWebView>("Openbossa", 1, 0, "MobileWebView");

@@ -43,9 +43,9 @@ MobileWebPage::~MobileWebPage()
 QString MobileWebPage::userAgentForUrl(const QUrl &url) const
 {
 #if defined(Q_OS_LINUX)
-    // simulate android, since there is no user agent for this browser
+    // simulate iPad
     return QWebPage::userAgentForUrl(url)
-        .replace("Linux", "Linux, like Android");
+        .replace("Linux i686", "CPU OS 4_2 like Mac OS X").replace("X11", "iPad");
 #else
     return QWebPage::userAgentForUrl(url);
 #endif

@@ -31,6 +31,12 @@ Item {
             webview.url = model.url;
     }
 
+    function getHostname(str) {
+        var re = new RegExp('^http(?:s)?\://([^/]+)', 'im');
+        var text = str.match(re)[0].toString();
+	    return text.replace(/(http|https)\:\/\//i, "").toString();
+    }
+
     MouseArea {
         anchors.fill: parent
         onClicked: {
@@ -60,6 +66,17 @@ Item {
             anchors.fill: parent
             anchors.rightMargin: -1
         }
+
+        Text {
+            anchors.top: parent.bottom;
+            anchors.topMargin: 6;
+            font.family: "Helvetica";
+            font.pointSize: 12;
+            text: getHostname(url);
+            color: "white";
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+
 
         Image {
             source: ":images/bt_browser_close.png"

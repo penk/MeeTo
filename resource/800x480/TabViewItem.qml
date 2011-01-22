@@ -33,7 +33,10 @@ Item {
 
     MouseArea {
         anchors.fill: parent
-        onClicked: tabViewItem.clicked();
+        onClicked: {
+            tabViewItem.clicked();
+            listview.currentIndex = index;
+        }
     }
 
     BorderImage {
@@ -62,10 +65,10 @@ Item {
         Image {
             source: ":images/bt_browser_close.png"
             visible: deletable
-            anchors.right: parent.right
-            anchors.bottom: parent.bottom
-            anchors.rightMargin: -20
-            anchors.bottomMargin: -20
+            anchors.right: parent.left
+            anchors.bottom: parent.top
+            anchors.rightMargin: -15
+            anchors.bottomMargin: -15
             MouseArea {
                 anchors.fill: parent
                 onClicked: tabViewItem.removeClicked();

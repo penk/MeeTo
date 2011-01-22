@@ -17,14 +17,26 @@ Item {
 
         TabViewItem {
             id: tabItem
-            deletable: (tabModel.count > 1) && (index != tabModel.count - 1)
+//            deletable: (tabModel.count > 1) && (index != tabModel.count - 1)
+
+            deletable : {
+
+                ((tabModel.count > 1) && (index != tabModel.count - 1)) || 
+                ((tabModel.count == maxTabCount) && (url != ""));
+
+            }
 
             width: 300; height: 180;
 
 //            width: tabView.width * finalScale
 //            height: (tabView.height + tabView.spareHeight) * finalScale
 
-            onRemoveClicked: tabModel.remove(index);
+            onRemoveClicked: {
+
+                tabModel.remove(index);
+                if (tabModel.count == 8) tabModel.add("", "");
+
+            }
 
             GridView.onRemove: SequentialAnimation {
                 PropertyAction { target: tabItem; property: "GridView.delayRemove"; value: true; }

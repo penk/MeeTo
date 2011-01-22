@@ -69,10 +69,14 @@ Item {
 
         Text {
             anchors.top: parent.bottom;
-            anchors.topMargin: 6;
+            anchors.topMargin: 5;
             font.family: "Helvetica";
             font.pointSize: 12;
-            text: getHostname(url);
+            text: {
+                if (url === "") { "New Page" }
+                else getHostname(url);
+
+            } 
             color: "white";
             anchors.horizontalCenter: parent.horizontalCenter
         }

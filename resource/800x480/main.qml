@@ -23,19 +23,11 @@ Rectangle {
         }
     }
 
-    MainBar {
-        id: mainbar
-        title: tabView.current.title
-        anchors.top: parent.top
-        anchors.left: parent.left
-        anchors.right: parent.right
-    }
-
     Toolbar {
         id: toolbar
         visible: false
         opacity: 0.0
-        anchors.top: mainbar.bottom
+        anchors.top: parent.top
         anchors.left: parent.left
         anchors.right: parent.right
 

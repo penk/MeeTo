@@ -2,7 +2,6 @@
 <qresource>
     <file>main.qml</file>
     <file>Toolbar.qml</file>
-    <file>MainBar.qml</file>
     <file>TabView.qml</file>
     <file>TabViewItem.qml</file>
     <file>images/inputtext.png</file>
@@ -15,9 +14,14 @@
     <file>images/bt_browser_stop.png</file>
     <file>images/bt_browser_reload.png</file>
     <file>images/bt_browser_close.png</file>
+    <file>images/bt_browser_clear.png</file>
+    <file>images/bt_browser_add.png</file>
+    <file>images/bt_browser_bookmark.png</file>
     <file>images/bt_taskbar_close.png</file>
     <file>images/bt_taskbar_home.png</file>
     <file>images/shadow_pic.png</file>
     <file>images/divisor.png</file>
+    <file>images/new_page.png</file>
+    <file>images/toolbar.png</file>
 </qresource>
 </RCC>

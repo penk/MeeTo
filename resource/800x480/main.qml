@@ -1,4 +1,5 @@
 import Qt 4.7
+//import Qt.labs.gestures 2.0
 
 Rectangle {
     id: mainWindow
@@ -7,6 +8,17 @@ Rectangle {
     color: "black"
 
     signal resized();
+
+/*
+    GestureArea { 
+        anchors.fill: parent;        
+        Tap { 
+            onStarted: console.log("tap started");
+            onFinished: console.log("tap completed"); 
+        }
+
+    }
+*/
 
     TabView {
         id: tabView

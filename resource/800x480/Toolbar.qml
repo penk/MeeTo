@@ -23,7 +23,8 @@ Rectangle {
     }
 
     function setUrl(value) {
-        textInput.text = value;
+         if (value.length <= 60) textInput.text = value;
+        else textInput.text = value.substring(0, 57) + '...';
     }
 
     BorderImage {
@@ -105,7 +106,10 @@ Rectangle {
         BorderImage {
             source: ":images/inputtext_progress.png"
             /* XXX: use clip in the future when clip bug is fixed */
-            width: Math.max(20, input.width * toolbar.progress)
+            width: {  
+                if (toolbar.progress != 1) Math.max(20, input.width * toolbar.progress)
+                else 0 // clean up progress bar once loaded
+            }
             border.left: 10;
             border.right: 10;
             visible: (width > 20);

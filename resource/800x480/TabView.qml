@@ -17,9 +17,9 @@ Item {
 
         TabViewItem {
             id: tabItem
-            deletable: (tabModel.count > 1)
+            deletable: (tabModel.count > 1) && (index != tabModel.count - 1)
 
-            width: 300; height: 202;
+            width: 300; height: 225;
 
 //            width: tabView.width * finalScale
 //            height: (tabView.height + tabView.spareHeight) * finalScale
@@ -53,7 +53,7 @@ Item {
         id: listview
         anchors.fill: parent
         cellWidth: 320; 
-        cellHeight: 222;
+        cellHeight: 245;
 
         anchors.topMargin: -35
         anchors.leftMargin: parent.width * 0.05

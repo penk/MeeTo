@@ -39,15 +39,6 @@ Item {
         }
     }
 
-    BorderImage {
-        border.left: 50
-        border.right: 50
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.top: parent.bottom
-        source: ":images/shadow_pic.png"
-    }
-
     Rectangle {
         id: snapshot
         smooth: true
@@ -57,9 +48,17 @@ Item {
 
         PixmapItem {
             id: snapshotPicture
+            visible: deletable
             smooth: true
             anchors.fill: parent
             pixmap: model.snapshot
+        }
+
+        Image {
+            source: ":images/new_page.png"
+            visible: !deletable
+            anchors.fill: parent
+            anchors.rightMargin: -1
         }
 
         Image {

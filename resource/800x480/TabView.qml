@@ -5,7 +5,7 @@ Item {
 
     signal updateSnapshots(bool force);
 
-    property int maxTabCount : 6
+    property int maxTabCount : 9
     property int spareHeight : 60
     property real finalScale : 0.6
 

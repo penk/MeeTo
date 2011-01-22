@@ -82,7 +82,10 @@ Item {
 
         onTitleChanged: tabModel.setTitle(index, title);
         onLoadProgress: tabViewItem.progress = progress / 100.0;
-        onLoadFinished: tabViewItem.progress = 1.0;
+        onLoadFinished: {
+            tabViewItem.progress = 1.0;
+            toolbar.setUrl(browser.url);
+        }
 
         onUrlChanged: {
             initialized = true;

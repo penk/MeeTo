@@ -60,8 +60,6 @@ Item {
         cacheBuffer: 99999 /* keep tabs alive */
         model: tabModel
         delegate: tabViewDelegate
-
-        snapMode: GridView.SnapOneItem
     }
 
     MouseArea {

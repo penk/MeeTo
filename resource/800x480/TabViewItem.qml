@@ -34,8 +34,8 @@ Item {
     MouseArea {
         anchors.fill: parent
         onClicked: {
-            tabViewItem.clicked();
             listview.currentIndex = index;
+            tabViewItem.clicked();
         }
     }
 

@@ -31,7 +31,7 @@
 
 #define CLICK_CONSTANT 15
 #define TILE_FROZEN_DELAY 100
-#define FADE_SCROLL_TIMEOUT 1000
+#define FADE_SCROLL_TIMEOUT 300
 #define MIN_ZOOM_SCALE 0.1
 #define MAX_ZOOM_SCALE 6.0
 #define DPI_ADJUSTMENT_SCALE 1.0
@@ -81,14 +81,14 @@ void MobileWebViewPrivate::init()
     q->setFlag(QGraphicsItem::ItemClipsChildrenToShape, true);
 
     verticalScroll = new ScrollBar(Qt::Vertical, q);
-    verticalScroll->setBackgroundColor(Qt::gray);
-    verticalScroll->setForegroundColor(Qt::black);
+    verticalScroll->setBackgroundColor(Qt::transparent);
+    verticalScroll->setForegroundColor(Qt::gray);
     verticalScroll->setZValue(1);
     verticalScroll->setOpacity(0.0);
 
     horizontalScroll = new ScrollBar(Qt::Horizontal, q);
-    horizontalScroll->setBackgroundColor(Qt::gray);
-    horizontalScroll->setForegroundColor(Qt::black);
+    horizontalScroll->setBackgroundColor(Qt::transparent);
+    horizontalScroll->setForegroundColor(Qt::gray);
     horizontalScroll->setZValue(1);
     horizontalScroll->setOpacity(0.0);
 

@@ -71,6 +71,7 @@ Item {
             anchors.top: parent.bottom;
             anchors.topMargin: 5;
             font.family: "Helvetica";
+            font.bold: true
             font.pointSize: 12;
             text: {
                 if (url === "") { "New Page" }

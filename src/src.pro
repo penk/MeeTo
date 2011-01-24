@@ -1,5 +1,5 @@
 TEMPLATE = app
-TARGET = raskbrowser
+TARGET = qtouchweb 
 
 QT += webkit declarative
 

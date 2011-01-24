@@ -61,8 +61,6 @@ MainWindow::MainWindow()
     setAttribute(Qt::WA_Maemo5AutoOrientation, true);
 #endif
 
-    this->setWindowFlags(Qt::FramelessWindowHint);
-
 }
 
 void MainWindow::resizeEvent(QResizeEvent *event)

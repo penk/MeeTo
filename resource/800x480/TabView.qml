@@ -67,8 +67,8 @@ Item {
         cellWidth: 320; 
         cellHeight: 220;
 
-        anchors.topMargin: -35
-        anchors.leftMargin: parent.width * 0.05
+        anchors.topMargin: 15
+        anchors.leftMargin: 50 // parent.width * 0.05
         cacheBuffer: 99999 /* keep tabs alive */
         model: tabModel
         delegate: tabViewDelegate

@@ -2,7 +2,7 @@ import Qt 4.7
 
 Rectangle {
     id: toolbar
-    height: 60
+    height: 58
     color: "#C6C8D1"
 
     signal reloadClicked();
@@ -87,7 +87,12 @@ Rectangle {
         source: ":images/bt_browser_add.png"
         anchors.left: bookmark.right
         anchors.verticalCenter: parent.verticalCenter
-        anchors.margins: 10;
+        anchors.margins: 10
+        MouseArea {
+            anchors.fill: parent
+            onPressed: add.source = ":images/bt_browser_bookmark.png"
+            onReleased: add.source = ":images/bt_browser_add.png"
+        }
     }
 
     BorderImage {

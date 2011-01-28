@@ -3,7 +3,7 @@ import Qt 4.7
 Rectangle {
     id: toolbar
     height: 58
-    color: "#C6C8D1"
+//    color: "#C6C8D1"
 
     signal reloadClicked();
     signal stopClicked();
@@ -127,7 +127,7 @@ Rectangle {
             anchors.fill: parent
             anchors.margins: 6
             font.family: "Nokia Sans"
-            font.pixelSize: 22
+            font.pixelSize: 16 
             onAccepted: toolbar.reloadClicked();
         }
 
@@ -149,6 +149,7 @@ Rectangle {
 
     }
 
+/*
     BorderImage {
         id: shadow
         source: ":images/shadow.png"
@@ -157,4 +158,6 @@ Rectangle {
         anchors.right: parent.right
         horizontalTileMode: BorderImage.Repeat
     }
+*/
+
 }

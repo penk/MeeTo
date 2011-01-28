@@ -37,10 +37,11 @@ Rectangle {
 
     Image {
         id: back
-        source: ":images/bt_browser_back.png"
+        source: ":images/back.png"
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
-        anchors.margins: 10;
+        anchors.topMargin: -10;
+        //anchors.margins: 10;
         MouseArea {
             anchors.fill: parent
             onClicked: toolbar.backClicked();
@@ -49,11 +50,11 @@ Rectangle {
 
     Image {
         id: forward
-        source: ":images/bt_browser_forward.png"
+        source: ":images/forward.png"
         anchors.left: back.right
         anchors.verticalCenter: parent.verticalCenter
-        anchors.margins: 10;
-        anchors.leftMargin: 12;
+        //anchors.margins: 10;
+        //anchors.leftMargin: 12;
         MouseArea {
             anchors.fill: parent
             onClicked: toolbar.forwardClicked();
@@ -62,11 +63,11 @@ Rectangle {
 
     Image {
         id: options
-        source: ":images/bt_browser_options.png"
+        source: ":images/tab.png"
         anchors.left: forward.right
         anchors.verticalCenter: parent.verticalCenter
-        anchors.margins: 10;
-        anchors.leftMargin: 7;
+        //anchors.margins: 10;
+        //anchors.leftMargin: 7;
         MouseArea {
             anchors.fill: parent
             onClicked: toolbar.optionsClicked();
@@ -75,23 +76,23 @@ Rectangle {
 
     Image {
         id: bookmark
-        source: ":images/bt_browser_bookmark.png"
+        source: ":images/bookmark.png"
         anchors.left: options.right
-        anchors.rightMargin: 12;
-        anchors.leftMargin: 16;
+        //anchors.rightMargin: 12;
+        //anchors.leftMargin: 16;
         anchors.verticalCenter: parent.verticalCenter
     }
 
     Image {
         id: add
-        source: ":images/bt_browser_add.png"
+        source: ":images/add.png"
         anchors.left: bookmark.right
         anchors.verticalCenter: parent.verticalCenter
-        anchors.margins: 10
+        //anchors.margins: 10
         MouseArea {
             anchors.fill: parent
-            onPressed: add.source = ":images/bt_browser_bookmark.png"
-            onReleased: add.source = ":images/bt_browser_add.png"
+            //onPressed: add.source = ":images/bt_browser_bookmark.png"
+            //onReleased: add.source = ":images/bt_browser_add.png"
         }
     }
 
@@ -100,10 +101,12 @@ Rectangle {
         source: ":images/inputtext.png"
         anchors.left: add.right
         anchors.right: parent.right
-        anchors.verticalCenter: parent.verticalCenter
+        //anchors.verticalCenter: parent.verticalCenter
+        anchors.top: parent.top;
 
+        anchors.topMargin: 20;
         anchors.rightMargin: 20;
-        anchors.leftMargin: 15;
+        //anchors.leftMargin: 15;
 
         border.left: 15;
         border.right: 15;

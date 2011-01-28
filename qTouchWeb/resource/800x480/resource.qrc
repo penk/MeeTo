@@ -19,6 +19,12 @@
     <file>images/bt_browser_bookmark.png</file>
     <file>images/bt_taskbar_close.png</file>
     <file>images/bt_taskbar_home.png</file>
+    <file>images/back.png</file>
+    <file>images/forward.png</file>
+    <file>images/tab.png</file>
+    <file>images/bookmark.png</file>
+    <file>images/add.png</file>
+
     <file>images/shadow_pic.png</file>
     <file>images/divisor.png</file>
     <file>images/new_page.png</file>

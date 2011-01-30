@@ -69,10 +69,10 @@ Item {
 
         Text {
             anchors.top: parent.bottom;
-            anchors.topMargin: 5;
+            anchors.topMargin: 0;
             font.family: "Helvetica";
             font.bold: true
-            font.pointSize: 12;
+            font.pointSize: 10;
             text: {
                 if (url === "") { "New Page" }
                 else getHostname(url);
@@ -88,8 +88,8 @@ Item {
             visible: deletable
             anchors.right: parent.left
             anchors.bottom: parent.top
-            anchors.rightMargin: -15
-            anchors.bottomMargin: -15
+            anchors.rightMargin: -17
+            anchors.bottomMargin: -17
             MouseArea {
                 anchors.fill: parent
                 onClicked: tabViewItem.removeClicked();

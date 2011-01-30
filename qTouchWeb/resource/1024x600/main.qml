@@ -4,7 +4,7 @@ import Qt 4.7
 Rectangle {
     id: mainWindow
     width: 1024
-    height: 768
+    height: 600 
     color: "black"
 
     signal resized();

@@ -26,7 +26,7 @@ SOURCES += main.cpp \
 }
 
 isEmpty(RESOLUTION) {
-    RESOLUTION = "800x480"
+    RESOLUTION = "1024x600"
 }
 
 RESOURCES = ../resource/$$RESOLUTION/resource.qrc

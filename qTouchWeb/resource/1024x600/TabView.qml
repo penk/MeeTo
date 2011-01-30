@@ -26,7 +26,7 @@ Item {
 
             }
 
-            width: 300; height: 180;
+            width: 300; height: 170;
 
 //            width: tabView.width * finalScale
 //            height: (tabView.height + tabView.spareHeight) * finalScale
@@ -65,10 +65,10 @@ Item {
         id: listview
         anchors.fill: parent
         cellWidth: 320; 
-        cellHeight: 220;
+        cellHeight: 195;
 
-        anchors.topMargin: 15
-        anchors.leftMargin: 50 // parent.width * 0.05
+        anchors.topMargin: -40;
+        anchors.leftMargin: 40 // parent.width * 0.05
         cacheBuffer: 99999 /* keep tabs alive */
         model: tabModel
         delegate: tabViewDelegate

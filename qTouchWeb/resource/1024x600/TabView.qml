@@ -114,12 +114,14 @@ Item {
             SequentialAnimation {
                 PropertyAction { target: blocker; properties: "visible"; }
                 ParentAnimation { target: current.webview; }
+/*
                 PropertyAction { target: toolbar; properties: "visible"; }
-                NumberAnimation { target: toolbar; properties: "opacity"; duration: 300; }
+                NumberAnimation { target: toolbar; properties: "opacity"; duration: 200; }
                 ParentAnimation {
                     target: current.websnap; via: tabOverlay;
-                    NumberAnimation { properties: "x,y,width,height"; easing.type: "OutExpo"; duration: 500; }
+                    NumberAnimation { properties: "x,y,width,height"; easing.type: "OutExpo"; duration: 350; }
                 }
+*/
                 PropertyAction { target: listview; properties: "visible"; }
                 PropertyAction { target: current.webview; properties: "visible,frozen"; }
                 PropertyAction { target: current.websnap; properties: "visible"; }
@@ -133,12 +135,14 @@ Item {
                 PropertyAction { target: current.websnap; properties: "visible"; }
                 PropertyAction { target: current.webview; properties: "visible,frozen"; }
                 PropertyAction { target: listview; properties: "visible"; }
+/*
                 ParentAnimation {
                     target: current.websnap; via: tabOverlay;
-                    NumberAnimation { properties: "x,y,width,height"; easing.type: "OutExpo"; duration: 500; }
+                    NumberAnimation { properties: "x,y,width,height"; easing.type: "OutExpo"; duration: 350; }
                 }
-                NumberAnimation { target: toolbar; properties: "opacity"; duration: 300; }
+                NumberAnimation { target: toolbar; properties: "opacity"; duration: 200; }
                 PropertyAction { target: toolbar; properties: "visible"; }
+*/
                 ParentAnimation { target: current.webview; }
                 PropertyAction { target: blocker; properties: "visible"; }
             }

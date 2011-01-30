@@ -78,6 +78,7 @@ Rectangle {
         id: bookmark
         source: ":images/bookmark.png"
         anchors.left: options.right
+        opacity: 0.3
         //anchors.rightMargin: 12;
         //anchors.leftMargin: 16;
         anchors.verticalCenter: parent.verticalCenter
@@ -88,6 +89,7 @@ Rectangle {
         source: ":images/add.png"
         anchors.left: bookmark.right
         anchors.verticalCenter: parent.verticalCenter
+        opacity: 0.3
         //anchors.margins: 10
         MouseArea {
             anchors.fill: parent

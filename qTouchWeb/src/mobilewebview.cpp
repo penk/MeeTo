@@ -299,6 +299,13 @@ bool MobileWebView::handleMouseEvent(QGraphicsSceneMouseEvent *e)
 
     const QPoint &mousePos = e->screenPos();
 
+    if (e->type() == QEvent::GraphicsSceneMouseDoubleClick) {
+        setZoomScale(1.5);
+
+        qDebug() << "double click";
+        return true;
+    }
+
     if (e->type() == QEvent::GraphicsSceneMousePress) {
         if (e->buttons() != Qt::LeftButton)
             return false;
@@ -361,9 +368,9 @@ bool MobileWebView::eventFilter(QObject *object, QEvent *e)
     case QEvent::GraphicsSceneMouseRelease:
     case QEvent::GraphicsSceneMouseDoubleClick:
         return handleMouseEvent(static_cast<QGraphicsSceneMouseEvent *>(e));
-    case QEvent::GraphicsSceneContextMenu:
+//    case QEvent::GraphicsSceneContextMenu:
         // ignore native context menu
-        return true;
+//        return true;
     case QEvent::GraphicsSceneHoverMove:
     case QEvent::GraphicsSceneHoverLeave:
     case QEvent::GraphicsSceneHoverEnter:
@@ -420,7 +427,10 @@ void MobileWebView::setZoomScale(qreal value)
 
     if (value != zoomScale()) {
         dd->webview->setScale(value * DPI_ADJUSTMENT_SCALE);
-    }
+    } 
+
+    // fallback to normal at the second double-tap
+    else { dd->webview->setScale( 1.0 * DPI_ADJUSTMENT_SCALE); } 
 }
 
 QPixmap MobileWebView::snapshot(int w, int h) const

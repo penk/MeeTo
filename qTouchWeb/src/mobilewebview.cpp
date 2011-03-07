@@ -29,6 +29,8 @@
 #include <QParallelAnimationGroup>
 #include <QGraphicsSceneMouseEvent>
 
+#include <QGesture>
+
 #define CLICK_CONSTANT 15
 #define TILE_FROZEN_DELAY 100
 #define FADE_SCROLL_TIMEOUT 300
@@ -94,6 +96,9 @@ void MobileWebViewPrivate::init()
 
     webview = new QGraphicsWebView(q);
     webview->installEventFilter(q);
+
+    webview->grabGesture(Qt::TapAndHoldGesture);
+
     webview->setResizesToContents(true);
     webview->setAttribute(Qt::WA_OpaquePaintEvent, true);
 
@@ -362,6 +367,7 @@ void MobileWebView::moveOffset(const QPoint &value)
 
 bool MobileWebView::eventFilter(QObject *object, QEvent *e)
 {
+
     switch(e->type()) {
     case QEvent::GraphicsSceneMousePress:
     case QEvent::GraphicsSceneMouseMove:

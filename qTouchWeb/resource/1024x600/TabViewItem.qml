@@ -1,6 +1,8 @@
 import Qt 4.7
 import Openbossa 1.0
 
+//import Qt.labs.gestures 2.0
+
 Item {
     id: tabViewItem
 
@@ -111,6 +113,20 @@ Item {
             toolbar.setUrl(browser.url);
         }
 
+/*
+    GestureArea {
+        anchors.fill: parent
+        TapAndHold {
+            when: true
+            onStarted: {
+                console.log("--tapAndHold started")
+            }
+            onFinished: {
+                console.log("--tapAndHold finished")
+            }
+        }
+    }
+*/
         onUrlChanged: {
             initialized = true;
             tabModel.setUrl(index, browser.url);

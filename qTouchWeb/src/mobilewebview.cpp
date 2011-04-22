@@ -368,6 +368,34 @@ void MobileWebView::moveOffset(const QPoint &value)
 bool MobileWebView::eventFilter(QObject *object, QEvent *e)
 {
 
+    QGestureEvent *gestureEvent = dynamic_cast<QGestureEvent*>(e);
+    if (gestureEvent) {
+		if (const QGesture *g = gestureEvent->gesture(Qt::TapAndHoldGesture)) {
+			if (g->state() == Qt::GestureStarted) {
+				qDebug() << "tap-n-hold event started";
+
+/*
+            QGraphicsSceneMouseEvent pressEvent(QEvent::GraphicsSceneMousePress);
+            pressEvent.setScenePos(QPointF(100, 100));
+            pressEvent.setButton(Qt::RightButton);
+            pressEvent.setButtons(Qt::RightButton);
+            QApplication::sendEvent(dd->webview, &pressEvent);
+*/
+
+
+            QGraphicsSceneMouseEvent *mouseEvent = static_cast<QGraphicsSceneMouseEvent *>(e);
+
+            const QPoint &mousePos = mouseEvent->screenPos();
+
+			QContextMenuEvent pressEvent(QContextMenuEvent::Mouse, mousePos);
+			QApplication::sendEvent(dd->webview, &pressEvent);
+
+				qDebug() << "context menu sent event";
+
+			}
+		}
+	}
+
     switch(e->type()) {
     case QEvent::GraphicsSceneMousePress:
     case QEvent::GraphicsSceneMouseMove:

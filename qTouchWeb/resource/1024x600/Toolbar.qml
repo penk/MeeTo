@@ -14,13 +14,20 @@ Rectangle {
     property bool loading : false
     property real progress : 0.0
     property string url : textInput.text
+    property string url_restore : url
 
     onLoadingChanged: {
-        if (loading)
-            reload.source = ":images/bt_browser_stop.png";
-        else
-            reload.source = ":images/bt_browser_reload.png";
+        textInput.focus = false; // escape focus
+
+//        if (loading)
+//            reload.source = ":images/bt_browser_stop.png";
+//        else
+//            reload.source = ":images/bt_browser_reload.png";
     }
+
+//    onUrlChanged: { // should consider button item or state changes while textInput.focus
+//        reload.source = ":images/bt_browser_clear.png";
+//    }
 
     function setUrl(value) {
          if (value.length <= 60) textInput.text = value;
@@ -133,7 +140,10 @@ Rectangle {
             anchors.margins: 6
             font.family: "Nokia Sans"
             font.pixelSize: 16 
-            onAccepted: toolbar.reloadClicked();
+            onAccepted: {
+                url_restore = url;
+                toolbar.reloadClicked();
+            }
         }
 
         Image {
@@ -141,13 +151,40 @@ Rectangle {
             source: ":images/bt_browser_reload.png"
             anchors.right: textInput.right
             anchors.verticalCenter: parent.verticalCenter
+            visible: !toolbar.loading && !textInput.focus
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    if (toolbar.loading)
-                        toolbar.stopClicked();
-                    else
-                        toolbar.reloadClicked();
+                    // FIXME resume url if empty
+                    toolbar.setUrl(url_restore);
+                    toolbar.reloadClicked();
+                }
+            }
+        }
+
+        Image {
+            id: stop
+            source: ":images/bt_browser_stop.png"
+            anchors.right: textInput.right
+            anchors.verticalCenter: parent.verticalCenter
+            visible: toolbar.loading && !textInput.focus
+            MouseArea {
+                anchors.fill: parent
+                onClicked: toolbar.stopClicked();
+            }
+        }
+
+        Image {
+            id: clear
+            source: ":images/bt_browser_clear.png"
+            anchors.right: textInput.right
+            anchors.verticalCenter: parent.verticalCenter
+            visible: textInput.focus && url != '';
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    url_restore = url;
+                    toolbar.setUrl('');
                 }
             }
         }

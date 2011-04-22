@@ -6,6 +6,8 @@
     <file>TabViewItem.qml</file>
     <file>images/inputtext.png</file>
     <file>images/inputtext_progress.png</file>
+    <file>images/searchbox.png</file>
+    <file>images/searchbox-expand.png</file>
     <file>images/shadow.png</file>
     <file>images/bt_browser_back.png</file>
     <file>images/bt_browser_forward.png</file>

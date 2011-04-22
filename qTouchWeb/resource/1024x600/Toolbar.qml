@@ -109,16 +109,16 @@ Rectangle {
         id: input
         source: ":images/inputtext.png"
         anchors.left: add.right
-        anchors.right: parent.right
+        anchors.right: search.left // parent.right
         //anchors.verticalCenter: parent.verticalCenter
         anchors.top: parent.top;
 
         anchors.topMargin: 20;
-        anchors.rightMargin: 20;
+        anchors.rightMargin: 8;
         //anchors.leftMargin: 15;
 
         border.left: 15;
-        border.right: 15;
+//        border.right: 15;
 
         BorderImage {
             source: ":images/inputtext_progress.png"
@@ -151,7 +151,7 @@ Rectangle {
             source: ":images/bt_browser_reload.png"
             anchors.right: textInput.right
             anchors.verticalCenter: parent.verticalCenter
-            visible: !toolbar.loading && !textInput.focus
+            visible: !toolbar.loading && !textInput.focus && !searchInput.focus
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
@@ -186,6 +186,48 @@ Rectangle {
                     url_restore = url;
                     toolbar.setUrl('');
                 }
+            }
+        }
+
+    }
+
+    BorderImage {
+        id: search
+        source: searchInput.focus ? ":images/searchbox-expand.png" : ":images/searchbox.png";
+
+        anchors.topMargin: 20;
+        anchors.rightMargin: 9;
+
+        anchors.right: parent.right
+        anchors.left: textInput.right
+        anchors.top: parent.top;
+
+        TextInput {
+            id: searchInput
+            text: ""
+            color: "black"
+            anchors.fill: parent
+            anchors.margins: 6
+            anchors.leftMargin: 15
+            font.family: "Nokia Sans"
+            font.pixelSize: 16 
+            onAccepted: {
+                toolbar.setUrl('http://www.google.com/search?hl=en&q=' + searchInput.text);
+                searchInput.focus = false; 
+                searchInput.text = ''; // FIXME: restore search text 
+                toolbar.reloadClicked();
+            }
+        }
+
+        Image {
+            id: clearSearch
+            source: ":images/bt_browser_clear.png"
+            anchors.right: searchInput.right
+            anchors.verticalCenter: parent.verticalCenter
+            visible: searchInput.focus && searchInput.text != '';
+            MouseArea {
+                anchors.fill: parent
+                onClicked: searchInput.text = '';
             }
         }
 

@@ -30,8 +30,9 @@ Rectangle {
 //    }
 
     function setUrl(value) {
-         if (value.length <= 60) textInput.text = value;
-        else textInput.text = value.substring(0, 57) + '...';
+	// FIXME: show up correct url 
+         if (value.length <= 45) textInput.text = value;
+        else textInput.text = value.substring(0, 42) + '...';
     }
 
     BorderImage {

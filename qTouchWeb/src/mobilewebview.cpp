@@ -133,9 +133,11 @@ void MobileWebViewPrivate::init()
 
 QRectF MobileWebViewPrivate::contentGeometry() const
 {
+
+    // FIXME: dynamically add bottom paddding for virtual keyboard
     return QRectF(webview->x(), webview->y(),
                   webview->size().width() * webview->scale(),
-                  webview->size().height() * webview->scale());
+                  webview->size().height() * webview->scale() + 352);
 }
 
 void MobileWebViewPrivate::setScrollBarsVisible(bool visible)

@@ -78,12 +78,14 @@ void MainWindow::setupWebSettings()
     QWebSettings *settings = QWebSettings::globalSettings();
 
     settings->setAttribute(QWebSettings::ZoomTextOnly, false);
-    settings->setAttribute(QWebSettings::PluginsEnabled, false);
+    settings->setAttribute(QWebSettings::PluginsEnabled, true);
     settings->setAttribute(QWebSettings::LocalStorageEnabled, true);
     settings->setAttribute(QWebSettings::FrameFlatteningEnabled, true);
     settings->setAttribute(QWebSettings::DeveloperExtrasEnabled, true);
     settings->setAttribute(QWebSettings::TiledBackingStoreEnabled, true);
     settings->setAttribute(QWebSettings::LocalContentCanAccessRemoteUrls, true);
+    settings->setAttribute(QWebSettings::JavascriptCanOpenWindows, true);
+
 
     QWebSettings::setMaximumPagesInCache(WEB_MAX_PAGES_IN_CACHE);
     QWebSettings::setObjectCacheCapacities(WEB_MAX_CACHE_SIZE, WEB_MAX_CACHE_SIZE, WEB_MAX_CACHE_SIZE);

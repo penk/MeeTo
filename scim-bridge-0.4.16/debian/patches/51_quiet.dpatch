@@ -1,0 +1,28 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 51_quiet.dpatch by Jonathan Riddell
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Fixes 10-20s delay in launching apps when scim-bridge-client(s) installed but scim is not
+
+@DPATCH@
+diff -urNad scim-bridge-0.4.14~/client-qt/scim-bridge-client-imcontext-qt.cpp scim-bridge-0.4.14/client-qt/scim-bridge-client-imcontext-qt.cpp
+--- scim-bridge-0.4.14~client-qt/client-qt/scim-bridge-client-imcontext-qt.cpp	2007-07-07 03:30:10.000000000 +0100
++++ scim-bridge-0.4.14client-qt/client-qt/scim-bridge-client-imcontext-qt.cpp	2008-09-19 13:24:48.000000000 +0100
+@@ -173,7 +173,7 @@
+ #endif
+ 
+     if (!scim_bridge_client_is_messenger_opened ()) {
+-        scim_bridge_perrorln ("The messenger is now down");
++        scim_bridge_pdebugln (1, "The messenger is now down");
+     } else if (scim_bridge_client_register_imcontext (this)) {
+         scim_bridge_perrorln ("Failed to register the IMContext");
+     } else {
+@@ -189,7 +189,7 @@
+     if (this == focused_imcontext) focus_out ();
+ 
+     if (!scim_bridge_client_is_messenger_opened ()) {
+-        scim_bridge_perrorln ("The messenger is now down");
++        scim_bridge_pdebugln (1, "The messenger is now down");
+     } else if (scim_bridge_client_deregister_imcontext (this)) {
+         scim_bridge_perrorln ("Failed to deregister an IMContext");
+     } else {

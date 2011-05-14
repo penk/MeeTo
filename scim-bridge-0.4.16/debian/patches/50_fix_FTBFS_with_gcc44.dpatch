@@ -1,0 +1,19 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 50_fix_FTBFS_with_gcc44.dpatch by  <zhengpeng.hou@gmail.com>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP:
+
+@DPATCH@
+diff -ruNad scim-bridge-0.4.16.orig/agent/scim-bridge-agent-application.cpp scim-bridge-0.4.16/agent/scim-bridge-agent-application.cpp
+--- scim-bridge-0.4.16.orig/agent/scim-bridge-agent-application.cpp	2009-04-28 04:55:13.000000000 +0000
++++ scim-bridge-0.4.16/agent/scim-bridge-agent-application.cpp	2009-05-03 14:40:50.000000000 +0000
+@@ -22,7 +22,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <unistd.h>
+-
++#include <cstdio>
+ #include <iostream>
+ 
+ #include "scim-bridge-agent.h"

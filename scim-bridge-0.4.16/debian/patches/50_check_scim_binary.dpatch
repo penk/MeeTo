@@ -1,0 +1,25 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 50_check_scim_binary.dpatch by <roderick.greening@gmail.com>,
+## Zhengpeng Hou <zhengpeng-hou@ubuntu.com>, Arne Goetje <arne@ubuntu.com>,
+## and Colin Watson <cjwatson@ubuntu.com>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Fixes 10-20s delay in launching apps when scim-bridge-client(s) installed but scim is not running
+
+@DPATCH@
+diff -urNad scim-bridge-0.4.16-2ubuntu1~/client-common/scim-bridge-client.c scim-bridge-0.4.16-2ubuntu1/client-common/scim-bridge-client.c
+--- scim-bridge-0.4.16-2ubuntu1~/client-common/scim-bridge-client.c	2009-06-25 21:54:26.000000000 +0100
++++ scim-bridge-0.4.16-2ubuntu1/client-common/scim-bridge-client.c	2009-06-25 21:54:36.000000000 +0100
+@@ -1039,6 +1039,12 @@
+         return RETVAL_FAILED;
+     }
+ 
++    /* This is a quick fix. "pidof scim-helper-manager >/dev/null" should probably be defined somewhere instead of coded like below - RG */
++    if (system ("pidof scim-helper-manager >/dev/null") != 0) {
++        scim_bridge_pdebugln (8, "There is no scim-helper-manager binary running");
++        return RETVAL_FAILED;
++    }
++
+     int i;
+     for (i = 0; i < 10; ++i) {
+         int socket_fd = socket (PF_UNIX, SOCK_STREAM, 0);

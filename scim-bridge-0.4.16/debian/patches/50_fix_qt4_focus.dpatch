@@ -1,0 +1,38 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 50_fix_qt4_focus.dpatch by Hou ZhengPeng <zhengpeng.hou@gmail.com>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Fix immodule install dir
+
+@DPATCH@
+
+diff -ruNad scim-bridge-0.4.15/client-qt/scim-bridge-client-imcontext-qt.cpp scim-bridge-0.4.15-work/client-qt/scim-bridge-client-imcontext-qt.cpp
+--- scim-bridge-0.4.15/client-qt/scim-bridge-client-imcontext-qt.cpp	2007-07-07 02:30:10.000000000 +0000
++++ scim-bridge-0.4.15-work/client-qt/scim-bridge-client-imcontext-qt.cpp	2008-09-24 13:32:45.000000000 +0000
+@@ -220,7 +220,12 @@
+ {
+     scim_bridge_pdebugln (4, "ScimBridgeClientIMContextImpl::setFocusWidget ()");
+     QInputContext::setFocusWidget (widget);
+-    focus_in ();
++	if (widget == NULL) {
++    	focus_out ();
++	}
++	else {
++    	focus_in ();
++	}
+     update ();
+ }
+ 
+@@ -442,8 +447,10 @@
+         }
+     }
+ 
+-    set_preedit_shown (false);
+-    update_preedit ();
++	if (preedit_shown) {
++    	set_preedit_shown (false);
++    	update_preedit ();
++	}
+ 
+     focused_imcontext = NULL;
+ }

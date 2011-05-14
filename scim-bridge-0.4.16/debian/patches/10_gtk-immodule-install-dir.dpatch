@@ -1,0 +1,32 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 01_gtk-immodule-install-dir .dpatch by Hou ZhengPeng <zhengpeng.hou@gmail.com>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Fix immodule install dir
+
+@DPATCH@
+
+diff -ruNad scim-bridge-0.4.16.orig/client-gtk/Makefile.am scim-bridge-0.4.16/client-gtk/Makefile.am
+--- scim-bridge-0.4.16.orig/client-gtk/Makefile.am	2009-04-28 12:55:13.000000000 +0800
++++ scim-bridge-0.4.16/client-gtk/Makefile.am	2009-04-28 12:55:41.000000000 +0800
+@@ -24,7 +24,7 @@
+ 
+ noinst_HEADERS = scim-bridge-client-gtk.h scim-bridge-client-imcontext-gtk.h  scim-bridge-client-key-event-utility-gtk.h
+ 
+-moduledir = @GTK_LIBDIR@/gtk-2.0/immodules
++moduledir = $(GTK_LIBDIR)/gtk-2.0/$(GTK_BINARY_VERSION)/immodules
+ 
+ module_LTLIBRARIES = im-scim-bridge.la
+ 
+diff -ruNad scim-bridge-0.4.16.orig/client-gtk/Makefile.in scim-bridge-0.4.16/client-gtk/Makefile.in
+--- scim-bridge-0.4.16.orig/client-gtk/Makefile.in	2009-04-28 12:55:13.000000000 +0800
++++ scim-bridge-0.4.16/client-gtk/Makefile.in	2009-04-28 12:56:11.000000000 +0800
+@@ -239,7 +239,7 @@
+ @SCIM_BRIDGE_BUILD_GTK2_IMMODULE_TRUE@			  -I$(top_srcdir)/client-common
+ 
+ @SCIM_BRIDGE_BUILD_GTK2_IMMODULE_TRUE@noinst_HEADERS = scim-bridge-client-gtk.h scim-bridge-client-imcontext-gtk.h  scim-bridge-client-key-event-utility-gtk.h
+-@SCIM_BRIDGE_BUILD_GTK2_IMMODULE_TRUE@moduledir = @GTK_LIBDIR@/gtk-2.0/immodules
++@SCIM_BRIDGE_BUILD_GTK2_IMMODULE_TRUE@moduledir = $(GTK_LIBDIR)/gtk-2.0/$(GTK_BINARY_VERSION)/immodules
+ @SCIM_BRIDGE_BUILD_GTK2_IMMODULE_TRUE@module_LTLIBRARIES = im-scim-bridge.la
+ @SCIM_BRIDGE_BUILD_GTK2_IMMODULE_TRUE@im_scim_bridge_la_SOURCES = im-scim-bridge-gtk.c \
+ @SCIM_BRIDGE_BUILD_GTK2_IMMODULE_TRUE@							scim-bridge-client-gtk.c \

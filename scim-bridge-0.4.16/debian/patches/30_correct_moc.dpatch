@@ -1,0 +1,55 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 30_correct_moc.dpatch by  <zhengpeng.hou@gmail.com>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP:
+
+@DPATCH@
+diff -ruNad scim-bridge-0.4.16.orig/client-qt/qt3/Makefile.am scim-bridge-0.4.16/client-qt/qt3/Makefile.am
+--- scim-bridge-0.4.16.orig/client-qt/qt3/Makefile.am	2009-04-28 12:55:13.000000000 +0800
++++ scim-bridge-0.4.16/client-qt/qt3/Makefile.am	2009-04-28 13:07:15.000000000 +0800
+@@ -44,7 +44,7 @@
+ im_scim_bridge_la_LIBADD  = $(top_srcdir)/common/libscimbridgecommon.la \
+ 							$(top_srcdir)/client-common/libscimbridgeclientcommon.la
+ 
+-MOC = @QT3_PREFIX@/bin/moc
++MOC = /usr/bin/moc-qt3
+ 
+ moc_scim-bridge-client-qt.cpp: ../scim-bridge-client-qt.h
+ 	$(MOC) $< -o $@
+diff -ruNad scim-bridge-0.4.16.orig/client-qt/qt3/Makefile.in scim-bridge-0.4.16/client-qt/qt3/Makefile.in
+--- scim-bridge-0.4.16.orig/client-qt/qt3/Makefile.in	2009-04-28 12:55:13.000000000 +0800
++++ scim-bridge-0.4.16/client-qt/qt3/Makefile.in	2009-04-28 13:07:43.000000000 +0800
+@@ -261,7 +261,7 @@
+ @SCIM_BRIDGE_BUILD_QT3_IMMODULE_TRUE@im_scim_bridge_la_LIBADD = $(top_srcdir)/common/libscimbridgecommon.la \
+ @SCIM_BRIDGE_BUILD_QT3_IMMODULE_TRUE@							$(top_srcdir)/client-common/libscimbridgeclientcommon.la
+ 
+-@SCIM_BRIDGE_BUILD_QT3_IMMODULE_TRUE@MOC = @QT3_PREFIX@/bin/moc
++@SCIM_BRIDGE_BUILD_QT3_IMMODULE_TRUE@MOC = /usr/bin/moc-qt3
+ MAINTAINERCLEANFILES = Makefile.in
+ CLEANFILES = moc_scim-bridge-client-qt.cpp
+ all: all-am
+diff -ruNad scim-bridge-0.4.16.orig/client-qt/qt4/Makefile.am scim-bridge-0.4.16/client-qt/qt4/Makefile.am
+--- scim-bridge-0.4.16.orig/client-qt/qt4/Makefile.am	2009-04-28 12:55:13.000000000 +0800
++++ scim-bridge-0.4.16/client-qt/qt4/Makefile.am	2009-04-28 13:06:01.000000000 +0800
+@@ -44,7 +44,7 @@
+ im_scim_bridge_la_LIBADD  = $(top_srcdir)/common/libscimbridgecommon.la \
+ 							$(top_srcdir)/client-common/libscimbridgeclientcommon.la
+ 
+-MOC = @QT4_PREFIX@/bin/moc
++MOC = /usr/bin/moc-qt4
+ 
+ moc_scim-bridge-client-qt.cpp: ../scim-bridge-client-qt.h
+ 	$(MOC) $< -o $@
+diff -ruNad scim-bridge-0.4.16.orig/client-qt/qt4/Makefile.in scim-bridge-0.4.16/client-qt/qt4/Makefile.in
+--- scim-bridge-0.4.16.orig/client-qt/qt4/Makefile.in	2009-04-28 12:55:13.000000000 +0800
++++ scim-bridge-0.4.16/client-qt/qt4/Makefile.in	2009-04-28 13:06:47.000000000 +0800
+@@ -261,7 +261,7 @@
+ @SCIM_BRIDGE_BUILD_QT4_IMMODULE_TRUE@im_scim_bridge_la_LIBADD = $(top_srcdir)/common/libscimbridgecommon.la \
+ @SCIM_BRIDGE_BUILD_QT4_IMMODULE_TRUE@							$(top_srcdir)/client-common/libscimbridgeclientcommon.la
+ 
+-@SCIM_BRIDGE_BUILD_QT4_IMMODULE_TRUE@MOC = @QT4_PREFIX@/bin/moc
++@SCIM_BRIDGE_BUILD_QT4_IMMODULE_TRUE@MOC = /usr/bin/moc-qt4
+ MAINTAINERCLEANFILES = Makefile.in
+ CLEANFILES = moc_scim-bridge-client-qt.cpp
+ all: all-am

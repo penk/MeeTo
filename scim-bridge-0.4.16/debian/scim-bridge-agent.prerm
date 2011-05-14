@@ -1,0 +1,30 @@
+#!/bin/sh
+set -e
+
+ua_remove () {
+	update-alternatives \
+        --remove xinput-$1 \
+        /etc/X11/xinit/xinput.d/$2 ;
+}
+
+case "$1" in
+    remove|upgrade|deconfigure)
+        ua_remove all_ALL scim-bridge
+        ua_remove ja_JP   scim-bridge
+        ua_remove ko_KR   scim-bridge
+        ua_remove zh_CN   scim-bridge
+        ua_remove zh_TW   scim-bridge
+        ua_remove zh_HK   scim-bridge
+        ua_remove zh_SG   scim-bridge
+	;;
+    failed-upgrade)
+	;;
+    *)
+	echo "prerm called with unknown argument \`$1'" >&2
+	exit 1
+   ;;
+esac
+
+#DEBHELPER#
+
+exit 0

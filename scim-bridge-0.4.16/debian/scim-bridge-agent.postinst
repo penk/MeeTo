@@ -1,0 +1,33 @@
+#!/bin/sh
+set -e
+
+ua_inst () {
+	update-alternatives \
+        --install /etc/X11/xinit/xinput.d/$1 xinput-$1 \
+        /etc/X11/xinit/xinput.d/$2 $3 ;
+}
+
+case "$1" in
+    configure)
+        #ua_inst all_ALL scim-bridge  0
+        ua_inst ja_JP   scim-bridge 60
+        ua_inst ko_KR   scim-bridge 60
+        ua_inst zh_CN   scim-bridge 60
+        ua_inst zh_TW   scim-bridge 60
+        ua_inst zh_HK   scim-bridge 60
+        ua_inst zh_SG   scim-bridge 60
+    ;;
+
+    abort-upgrade|abort-remove|abort-deconfigure)
+
+    ;;
+
+    *)
+        echo "postinst called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+#DEBHELPER#
+
+

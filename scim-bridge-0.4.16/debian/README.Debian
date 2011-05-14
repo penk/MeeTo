@@ -1,0 +1,30 @@
+If you want to use scim-bridge, I assume that you have installed related
+packages, like scim-bridge-agent, scim-bridge-client-{gtk,qt}. 
+To use it, you shall set your corresponding environment variable, such
+as, GTK_IM_MODULE and QT_IM_MODULE. In most recently Debian/Ubuntu, if
+you have im-switch installed, you can provide a configure file in 
+~/.xinput.d/<ll_CC>, which contain as below:
+##=================Begin============================================
+    XIM=SCIM
+    if [ -e /usr/bin/skim ]; then
+        XIM_PROGRAM=/usr/bin/skim
+    else
+        XIM_PROGRAM=/usr/bin/scim
+    fi
+    XIM_ARGS="-d"
+    GTK_IM_MODULE=scim-bridge
+    QT_IM_MODULE=scim-bridge
+    DEPENDS="scim | skim, scim-bridge-agent, scim-bridge-client-gtk | scim-bridge-client-qt"
+##=================End==============================================
+You may open a terminal, and do: locale |grep LANGUAGE, then you will get
+the value of ll_CC. In above configure file, we make GTK and Qt programs all
+use scim-bridge, but you can decide whether to use them both.
+
+It looks like many old-time users of scim and scim-bridge experience frequent
+crashes (cf. https://launchpad.net/bugs/338217).  The reason is not completely
+clear, but seems to stem from incompatible data structures in old config files
+that crash more recent versions of scim-bridge.  The best known remedy is to
+"rm -Rf ~/.scim" (or backup that directory somewhere else if you prefer) and
+optionally reinstall scim and other affected packages.
+
+If you have any problem, you may contact me: zhengpeng-hou AT ubuntu .com.

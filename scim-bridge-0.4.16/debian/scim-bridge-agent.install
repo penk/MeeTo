@@ -1,0 +1,2 @@
+usr/bin/scim-bridge
+etc/X11/xinit/xinput.d/scim-bridge

@@ -1,0 +1,46 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 40_correct_gtk_client_missing_include.dpatch by  <zhengpeng.hou@gmail.com>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP:
+
+@DPATCH@
+diff -ruNad scim-bridge-0.4.16.orig/client-gtk/Makefile.am scim-bridge-0.4.16/client-gtk/Makefile.am
+--- scim-bridge-0.4.16.orig/client-gtk/Makefile.am	2009-04-28 12:55:13.000000000 +0800
++++ scim-bridge-0.4.16/client-gtk/Makefile.am	2009-04-28 13:13:09.000000000 +0800
+@@ -33,13 +33,13 @@
+ 							scim-bridge-client-imcontext-gtk.c \
+ 							scim-bridge-client-key-event-utility-gtk.c
+ 
+-im_scim_bridge_la_CXXFLAGS=@GTK2_CFLAGS@
+-im_scim_bridge_la_CFLAGS  =@GTK2_CFLAGS@
++im_scim_bridge_la_CXXFLAGS= -I/usr/include/X11 @GTK2_CFLAGS@
++im_scim_bridge_la_CFLAGS  = -I/usr/include/X11 @GTK2_CFLAGS@
+ 
+ im_scim_bridge_la_LDFLAGS = -rpath $(moduledir) \
+ 		     -avoid-version -no-undefined \
+ 		     -module \
+-		     @GTK2_LIBS@
++		     -lX11 @GTK2_LIBS@
+ 
+ im_scim_bridge_la_LIBADD  = $(top_srcdir)/common/libscimbridgecommon.la \
+ 							$(top_srcdir)/client-common/libscimbridgeclientcommon.la
+diff -ruNad scim-bridge-0.4.16.orig/client-gtk/Makefile.in scim-bridge-0.4.16/client-gtk/Makefile.in
+--- scim-bridge-0.4.16.orig/client-gtk/Makefile.in	2009-04-28 12:55:13.000000000 +0800
++++ scim-bridge-0.4.16/client-gtk/Makefile.in	2009-04-28 13:15:31.000000000 +0800
+@@ -246,12 +246,12 @@
+ @SCIM_BRIDGE_BUILD_GTK2_IMMODULE_TRUE@							scim-bridge-client-imcontext-gtk.c \
+ @SCIM_BRIDGE_BUILD_GTK2_IMMODULE_TRUE@							scim-bridge-client-key-event-utility-gtk.c
+ 
+-@SCIM_BRIDGE_BUILD_GTK2_IMMODULE_TRUE@im_scim_bridge_la_CXXFLAGS = @GTK2_CFLAGS@
+-@SCIM_BRIDGE_BUILD_GTK2_IMMODULE_TRUE@im_scim_bridge_la_CFLAGS = @GTK2_CFLAGS@
++@SCIM_BRIDGE_BUILD_GTK2_IMMODULE_TRUE@im_scim_bridge_la_CXXFLAGS = -I/usr/include/X11 @GTK2_CFLAGS@
++@SCIM_BRIDGE_BUILD_GTK2_IMMODULE_TRUE@im_scim_bridge_la_CFLAGS = -I/usr/include/X11 @GTK2_CFLAGS@
+ @SCIM_BRIDGE_BUILD_GTK2_IMMODULE_TRUE@im_scim_bridge_la_LDFLAGS = -rpath $(moduledir) \
+ @SCIM_BRIDGE_BUILD_GTK2_IMMODULE_TRUE@		     -avoid-version -no-undefined \
+ @SCIM_BRIDGE_BUILD_GTK2_IMMODULE_TRUE@		     -module \
+-@SCIM_BRIDGE_BUILD_GTK2_IMMODULE_TRUE@		     @GTK2_LIBS@
++@SCIM_BRIDGE_BUILD_GTK2_IMMODULE_TRUE@		     -lX11 @GTK2_LIBS@
+ 
+ @SCIM_BRIDGE_BUILD_GTK2_IMMODULE_TRUE@im_scim_bridge_la_LIBADD = $(top_srcdir)/common/libscimbridgecommon.la \
+ @SCIM_BRIDGE_BUILD_GTK2_IMMODULE_TRUE@							$(top_srcdir)/client-common/libscimbridgeclientcommon.la

@@ -1,0 +1,57 @@
+Source: scim-bridge
+Section: utils
+Priority: optional
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+XSBC-Original-Maintainer: Zhengpeng Hou <zhengpeng-hou@ubuntu.com>
+Uploaders: Anthony Fok <foka@debian.org>
+Build-Depends: debhelper (>= 7.0), autotools-dev, libgtk2.0-dev (>= 2.10.1), libscim-dev (>= 1.4.6), dpatch, libqt3-mt-dev (>= 3.3.6), libqt4-dev, chrpath
+Standards-Version: 3.8.1
+Homepage: http://www.scim-im.org
+
+Package: scim-bridge-agent
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, scim-modules-socket, scim
+Recommends: scim-bridge-client-gtk | scim-bridge-client-qt | scim-bridge-client-qt4
+Description: IME server of scim-bridge communicate with SCIM
+ scim-bridge is a wrapper library for SCIM, written in C.
+ .
+ SCIM (Smart Common Input Method) is an input method (IM) platform.
+ .
+ Scim-bridge has two parts: agent and client. scim-bridge-agent stands
+ between SCIM and the clients (IMModules), so the clients only need 
+ communicate with scim-bridge-agent, because scim-bridge-agent was written
+ in C, it will solve some C++ ABI problems.
+
+Package: scim-bridge-client-gtk
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, scim-bridge-agent
+Replaces: scim-bridge (= 0.2.4-1)
+Description: IME server of scim-bridge communicate with SCIM
+ scim-bridge is a wrapper libray for SCIM, written in C.
+ .
+ SCIM (Smart Common Input Method) is an input method (IM) platform.
+ .
+ Scim-bridge-client-gtk is the gtk client of scim-bridge, it provides
+ another gtk-immodule for SCIM.
+
+Package: scim-bridge-client-qt
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, scim-bridge-agent
+Description: IME server of scim-bridge communicate with SCIM
+ scim-bridge is a wrapper library for SCIM, written in C.
+ .
+ SCIM (Smart Common Input Method) is an input method (IM) platform.
+ .
+ Scim-bridge-client-qt is the qt client of scim-bridge, it provides
+ another qt-immodule for SCIM.
+
+Package: scim-bridge-client-qt4
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, scim-bridge-agent
+Description: IME server of scim-bridge communicate with SCIM
+ scim-bridge is a wrapper library for SCIM, written in C.
+ .
+ SCIM (Smart Common Input Method) is an input method (IM) platform.
+ .
+ Scim-bridge-client-qt4 is the qt4 client of scim-bridge, it provides
+ another qt-immodule for SCIM.

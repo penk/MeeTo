@@ -1,0 +1,235 @@
+scim-bridge (0.4.16-2ubuntu4) maverick; urgency=low
+
+  * add some information to the README about crashes induced apparently by
+    incompatible data structures in old config files. (LP: #338217)
+
+ -- Rolf Leggewie <foss@rolf.leggewie.biz>  Sun, 21 Feb 2010 22:28:50 +0100
+
+scim-bridge (0.4.16-2ubuntu3) karmic; urgency=low
+
+  * add scim-bridge-client-qt4 to Recommends (LP: #400049)
+  * fix some minor spelling mistakes in the control file
+
+ -- Rolf Leggewie <foss@rolf.leggewie.biz>  Thu, 16 Jul 2009 04:34:27 +0200
+
+scim-bridge (0.4.16-2ubuntu2) karmic; urgency=low
+
+  * debian/im-switch/scim-bridge: fixed search path of Qt immodule to work
+    with Qt 4. (LP: #305452)
+
+ -- Ikuya Awashiro <ikuya@fruitsbasket.info>  Wed, 01 Jul 2009 13:45:05 +0000
+
+scim-bridge (0.4.16-2ubuntu1) karmic; urgency=low
+
+  * Resynchronise with Debian. Remaining changes:
+    - 50_check_scim_binary.dpatch: Fix 10-20s delay in launching apps when
+      scim is not running.
+    - 50_fix_qt4_focus.dpatch: Fix focus loss under KDE 4.
+    - 51_quiet.dpatch: Turn some error messages into debug lines.
+    - Just have scim-bridge-agent depend on scim, not scim | skim.
+
+ -- Colin Watson <cjwatson@ubuntu.com>  Thu, 25 Jun 2009 22:02:52 +0100
+
+scim-bridge (0.4.16-2) unstable; urgency=low
+
+  * Fix FTBFS by add proper parameter to chrpath. (Closes: #529571)
+    - Thanks for Deng Xiyue
+
+ -- Zhengpeng Hou <zhengpeng-hou@ubuntu.com>  Wed, 20 May 2009 16:52:35 +0000
+
+scim-bridge (0.4.16-1) unstable; urgency=low
+
+  * New upstream release
+  * update all patches due to upstreams change.
+  * Correct my First name in maintainer field.
+  * use chrpath to replace configure parameter.
+
+ -- Zhengpeng Hou <zhengpeng-hou@ubuntu.com>  Sat, 25 Apr 2009 15:22:36 +0000
+
+scim-bridge (0.4.14-2ubuntu5) intrepid; urgency=low
+
+  * 50_check_scim_binary.dpatch: Enable again, since the Qt agent really
+    does get upset if scim is installed but not running (as is the case in
+    many locales). This time, check for whether the scim-helper-manager
+    process is running.
+
+ -- Colin Watson <cjwatson@ubuntu.com>  Sun, 26 Oct 2008 16:07:56 +0000
+
+scim-bridge (0.4.14-2ubuntu4) intrepid; urgency=low
+
+  All changes thanks to Zheng Peng-Hou.
+  * Disable 50_check_scim_binary.dpatch since only a dependency on scim is
+    enough. Actually only a running scim-helper is needed, which is in the
+    scim package and gets started (and restarted if it dies) automatically.
+    However, modified the patch to check for schim-helper instead in case the
+    patch becomes necessary again. (LP: #286923)
+  * Add patch 50_fix_qt4_focus.dpatch to fix focus loss under KDE4. (LP:
+    #250046) 
+  * Update debian/control to fix dependencies and the Name of the Original
+    Maintainer.
+
+ -- Arne Goetje <arne@ubuntu.com>  Wed, 22 Oct 2008 10:44:39 +0800
+
+scim-bridge (0.4.14-2ubuntu3) intrepid; urgency=low
+
+  * Update 50_check_scim_binary.dpatch to check for running scim
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 20 Oct 2008 10:38:48 +0100
+
+scim-bridge (0.4.14-2ubuntu2) intrepid; urgency=low
+
+  * Add 51_quiet.dpatch, turns some error into debug lines, stop it
+    outputting lots of unnecessary text.
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri, 19 Sep 2008 13:37:03 +0100
+
+scim-bridge (0.4.14-2ubuntu1) intrepid; urgency=low
+
+  * Fixes 10-20s delay in launching apps when scim-bridge-client(s) installed
+    but scim is not
+    - 50_check_scim_binary.dpatch (LP: 203334)
+
+ -- Roderick B. Greening <roderick.greening@gmail.com>  Mon, 15 Sep 2008 17:15:29 -0230
+
+scim-bridge (0.4.14-2) unstable; urgency=low
+
+  * Merged with 0.4.14-1ubuntu2, which in particular fixes a dangling
+    /etc/alternatives/xinput-zh_CN upon package removal.  Thanks, Arne!
+  * debian/control:
+    - Build-Depends on libscim-dev rather than scim-dev.
+    - Fixed Lintian warning: build-depends-on-1-revision
+    - Bumped Standards-Version to 3.8.0.  No change required.
+  * Adding myself to Uploaders.
+
+ -- Anthony Fok <foka@debian.org>  Sat, 26 Jul 2008 11:17:37 +0800
+
+scim-bridge (0.4.14-1ubuntu2) hardy; urgency=low
+
+  * debian/scim-bridge-agent.postinst: set scim-bridge with priority of 60 for
+    all CJK locales
+  * added debian/scim-bridge-agenst.prerm: remove the u-a settings for
+    scim-bridge
+
+ -- Arne Goetje <arne@ubuntu.com>  Thu, 06 Mar 2008 22:57:40 +0800
+
+scim-bridge (0.4.14-1ubuntu1) hardy; urgency=low
+
+  * debian/rules:
+    + Remove empty po/scim.pot before building to make pkgstriptranslations
+      happy (Fix FTBFS; LP: #181029).
+  * debian/control:
+    + Modify Maintainer value to match DebianMaintainerField spec.
+
+ -- Marco Rodrigues <gothicx@sapo.pt>  Mon, 14 Jan 2008 01:19:33 +0000
+
+scim-bridge (0.4.14-1) unstable; urgency=low
+
+  * New upstream release
+  * Add Depends to scim-modules-socket. Closes: #442114
+    Thanks for Ming Hua's bug report.
+  * 40_correct_gtk_client_missing_include.dpatch. Closes: #453175
+  * Fixed build with Gcc-4.3 in upstream. Closes: #417683
+  * Add conffile for im-switch. Closes: #451938
+    Thanks for Deng Xiyue's bug report.
+  * Closes: #442172 Fixed in upstream.
+  * Disable build documents. Closes: #442726
+  * Upgrade Standards-Version to 3.7.3.
+
+ -- ZhengPeng Hou <zhengpeng-hou@ubuntu.com>  Sun, 23 Dec 2007 11:52:06 +0000
+
+scim-bridge (0.4.13-1) unstable; urgency=low
+
+  * New upstream release. (Closes: #417683)
+  * Add a binary pacakge: scim-bridge-client-qt4.
+  * update 20_correct_qt_client_install_dir.dpatch.
+  * Fix some typos in debian/control
+  * Drop scim-bridge dumy package.(Thanks Ming Hua)
+  * Add libqt4-dev to build-deps.
+  * Add 30_correct_moc.dpatch.
+
+ -- ZhengPeng Hou <zhengpeng-hou@ubuntu.com>  Thu, 09 Aug 2007 12:41:33 +0000
+
+scim-bridge (0.4.12-1) unstable; urgency=low
+
+  * New upstream release
+  * Polish description. (Closes: #416352)
+  * Provide an README.Debian for users. (Closes: #420234)
+  * Make scim-bridge Build-depend on scim-dev (>= 1.4.6-1).
+
+ -- ZhengPeng Hou <zhengpeng-hou@ubuntu.com>  Fri, 18 May 2007 05:48:22 +0000
+
+scim-bridge (0.4.10-1.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Gtk 2.10 transition; closes: #419313.
+    - Build-depend on libgtk2.0-dev >= 2.10.1-1.
+    - Don't hardcode the Gtk+ module ABI version.
+      . Use a wildcard in debian/scim-bridge-client-gtk.install.
+      . Update dpatches 01_gtk-immodule-install-dir (disabled) and
+        10_gtk-immodule-install-dir to use $(GTK_BINARY_VERSION).
+    - Call dh_gtkmodules in binary-arch.
+    - Drop scim-bridge-client-gtk.postinst, scim-bridge-client-gtk.postrm,
+      scim-bridge.postinst, and scim-bridge.postrm which only had
+      update-gtk-immodules calls.
+    - Drop libgtk2.0-bin dependency of scim-bridge-client-gtk.
+
+ -- Loic Minier <lool@dooz.org>  Sun, 29 Apr 2007 20:41:31 +0200
+
+scim-bridge (0.4.10-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- ZhengPeng Hou <zhengpeng-hou@ubuntu.com>  Tue, 27 Feb 2007 14:25:13 +0800
+
+scim-bridge (0.4.8-1) unstable; urgency=low
+
+  * New upstream release.
+  * Close #398376, add depends on libgtk2.0-bin.
+  * Separate into three packages due to the upstream's change.
+  * Add 20_correct_qt_client_install_dir.dpatch, for install
+    the qt clinet to the right place.
+  * Rename scim-bridge-agent.1 to scim-bridge.1, and polish it.
+  * Remove the 30_readme.dpatch and 40_fsf-address.dpatch, because
+    of the changes in upstream tarball. (thanks Anthony. Fok)
+
+ -- ZhengPeng Hou <zhengpeng-hou@ubuntu.com>  Sun, 26 Nov 2006 13:10:49 +0800
+
+scim-bridge (0.2.4-1) unstable; urgency=low
+
+  [ Hou ZhengPeng ]
+  * Initial release for Debian (Closes: Bug#360439)
+    (scim-bridge already in Ubuntu Dapper universe)
+  * New upstream release
+  * Fix typo in debian/copyright: change GPL-2 to LGPL
+  * Upgrade Standards-Version from 3.6.2 to 3.7.2
+
+  [ Anthony Fok ]
+  * Added myself as an Uploader.  :-)
+  * Fixed some minor typos in README etc.
+  * Fixed the full-text of debian/copyright.  Thanks to FTP Master
+    Joerg Jaspert for catching the mistake.  :-)
+  * Updated the upstream COPYRIGHT file too to update FSF mailing address.
+
+ -- Anthony Fok <foka@debian.org>  Wed, 26 Jul 2006 01:01:32 +0800
+
+scim-bridge (0.1.4-0ubuntu2) dapper; urgency=low
+
+  * Add dependency on scim or skim 
+  * Rewrite the Description in debian/control  
+
+ -- Hou ZhengPeng <zhengpeng.hou@gmail.com>  Wed, 12 Apr 2006 16:45:10 +0800
+
+scim-bridge (0.1.4-0ubuntu1) dapper; urgency=low
+
+  * New upstream release
+
+ -- Hou ZhengPeng <zhengpeng.hou@gmail.com>  Mon,  3 Apr 2006 22:45:11 +0800
+
+scim-bridge (0.1.3-0ubuntu1) dapper; urgency=low
+
+  * Initial release Closes #360439 
+  * Add 10_gtk-immodule-install-dir.dpatch for correct 
+    the install dir from /usr/lib/gtk-2.0/immodules to
+    /usr/lib/gtk-2.0/2.4.0/immodules
+
+ -- Hou ZhengPeng <zhengpeng.hou@gmail.com>  Sun,  2 Apr 2006 18:07:30 +0800

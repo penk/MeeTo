@@ -1,0 +1,8 @@
+10_gtk-immodule-install-dir.dpatch
+20_correct_qt_client_install_dir.dpatch
+30_correct_moc.dpatch
+40_correct_gtk_client_missing_include.dpatch
+50_fix_FTBFS_with_gcc44.dpatch
+50_check_scim_binary.dpatch
+50_fix_qt4_focus.dpatch
+51_quiet.dpatch

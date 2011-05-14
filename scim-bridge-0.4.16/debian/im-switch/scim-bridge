@@ -1,0 +1,22 @@
+XIM=SCIM
+if [ -e /usr/bin/skim ]; then
+    XIM_PROGRAM=" "
+else
+    XIM_PROGRAM=/usr/bin/scim
+fi
+XIM_ARGS="-d"
+if [ -e /usr/lib/gtk-2.0/*/immodules/im-scim-bridge.so ]; then
+    GTK_IM_MODULE=scim-bridge
+else
+    GTK_IM_MODULE=xim
+fi
+if [ -e /usr/lib/qt4/plugins/inputmethods/im-scim-bridge.so ]; then
+    QT_IM_MODULE=scim-bridge
+elif [ -e /usr/lib/qt3/plugins/inputmethods/im-scim-bridge.so ]; then
+    QT_IM_MODULE=scim-bridge
+else
+    QT_IM_MODULE=xim
+fi
+
+DEPENDS="scim | skim, scim-bridge-agent, scim-bridge-client-gtk | scim-bridge-client-qt"
+

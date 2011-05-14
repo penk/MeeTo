@@ -1,0 +1,18 @@
+<RCC>
+<qresource>
+    <file>layout.qml</file>
+    <file>Button.qml</file>
+    <file>image/keyboard-default.png</file>
+    <file>image/keyboard-capslock.png</file>
+    <file>image/keyboard-numeric.png</file>
+    <file>image/keyboard-punctuation.png</file>
+    <file>image/keyboard-bpmf.png</file>
+    <file>image/pressed.png</file>
+    <file>image/pressed-return.png</file>
+    <file>image/pressed-rightshift.png</file>
+    <file>image/pressed-leftpun.png</file>
+    <file>image/pressed-rightpun.png</file>
+    <file>image/pressed-space.png</file>
+    <file>image/pressed-undo.png</file>
+</qresource>
+</RCC>

@@ -1,0 +1,5 @@
+# how to build
+
+sudo apt-get install libfakekey-dev libxi-dev libxtst-dev 
+
+qmake && make

@@ -24499,7 +24499,7 @@ if test -n "$GTK2_CFLAGS"; then
   ac_status=$?
   $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
   (exit $ac_status); }; then
-  pkg_cv_GTK2_CFLAGS=`$PKG_CONFIG --cflags "gtk+-2.0 >= 2.4.0 pango >= 1.1.0 gdk-pixbuf-2.0 >= 2.4.0" 2>/dev/null`
+  pkg_cv_GTK2_CFLAGS=`$PKG_CONFIG --cflags "gtk+-2.0 >= 2.4.0 pango >= 1.1.0 gdk-pixbuf-2.0 >= 2.4.0 dbus-glib-1" 2>/dev/null`
 else
   pkg_failed=yes
 fi
@@ -24515,7 +24515,7 @@ if test -n "$GTK2_LIBS"; then
   ac_status=$?
   $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
   (exit $ac_status); }; then
-  pkg_cv_GTK2_LIBS=`$PKG_CONFIG --libs "gtk+-2.0 >= 2.4.0 pango >= 1.1.0 gdk-pixbuf-2.0 >= 2.4.0" 2>/dev/null`
+  pkg_cv_GTK2_LIBS=`$PKG_CONFIG --libs "gtk+-2.0 >= 2.4.0 pango >= 1.1.0 gdk-pixbuf-2.0 >= 2.4.0 dbus-glib-1" 2>/dev/null`
 else
   pkg_failed=yes
 fi
@@ -25866,7 +25866,8 @@ $debug ||
 if test -n "$CONFIG_FILES"; then
 
 
-ac_cr=''
+ac_cr='
+'
 ac_cs_awk_cr=`$AWK 'BEGIN { print "a\rb" }' </dev/null 2>/dev/null`
 if test "$ac_cs_awk_cr" = "a${ac_cr}b"; then
   ac_cs_awk_cr='\\r'

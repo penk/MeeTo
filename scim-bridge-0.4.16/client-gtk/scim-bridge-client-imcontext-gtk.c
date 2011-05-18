@@ -25,6 +25,8 @@
 
 #include <gtk/gtk.h>
 #include <gtk/gtkimcontext.h>
+#include <dbus/dbus.h>
+#include <dbus/dbus-glib.h>
 
 #include "scim-bridge-attribute.h"
 #include "scim-bridge-client.h"
@@ -796,7 +798,10 @@ gboolean scim_bridge_client_imcontext_filter_key_event (GtkIMContext *context, G
     if (imcontext == NULL || !imcontext->enabled) {
         return gtk_im_context_filter_keypress (fallback_imcontext, event);
     } else if (event->type == GDK_KEY_PRESS && (event->state & accelerator_mask) == 0) {
-        guint32 wchar = gdk_keyval_to_unicode (event->keyval);        if (wchar != 0) {            gchar buffer[10];            const int buffer_length = g_unichar_to_utf8 (wchar, buffer);
+        guint32 wchar = gdk_keyval_to_unicode (event->keyval);
+        if (wchar != 0) {
+            gchar buffer[10];
+            const int buffer_length = g_unichar_to_utf8 (wchar, buffer);
             buffer[buffer_length] = '\0';
             g_signal_emit_by_name (focused_imcontext, "commit", &buffer);
             return TRUE;
@@ -865,6 +870,39 @@ void scim_bridge_client_imcontext_focus_in (GtkIMContext *context)
 {
     scim_bridge_pdebugln (8, "scim_bridge_client_imcontext_focus_in ()");
 
+
+// dirty code of invoking dbus method 
+
+    DBusGConnection *connection;
+    GError *error;
+    DBusGProxy *proxy;
+  
+    g_type_init ();
+
+    error = NULL;
+    connection = dbus_g_bus_get (DBUS_BUS_SESSION, &error);
+  if (connection == NULL)
+    {
+      g_printerr ("Failed to open connection to bus: %s\n", error->message);
+      g_error_free (error);
+    }
+
+    proxy = dbus_g_proxy_new_for_name (connection, "org.xpud.vkb", "/", "local.VkbServer");
+
+    error = NULL;
+  if (!dbus_g_proxy_call (proxy, "focusin", &error, G_TYPE_INVALID))
+    {
+      /* Just do demonstrate remote exceptions versus regular GError */
+      if (error->domain == DBUS_GERROR && error->code == DBUS_GERROR_REMOTE_EXCEPTION)
+        g_printerr ("Caught remote method exception %s: %s",
+	            dbus_g_error_get_name (error),
+	            error->message);
+      else
+        g_printerr ("Error: %s\n", error->message);
+      g_error_free (error);
+    }
+
+
     ScimBridgeClientIMContext *imcontext = SCIM_BRIDGE_CLIENT_IMCONTEXT (context);
     
     if (focused_imcontext != NULL && focused_imcontext != imcontext) scim_bridge_client_imcontext_focus_out (GTK_IM_CONTEXT (focused_imcontext));
@@ -895,6 +933,35 @@ void scim_bridge_client_imcontext_focus_out (GtkIMContext *context)
 {
     scim_bridge_pdebugln (8, "scim_bridge_client_imcontext_focus_out ()");
 
+
+    DBusGConnection *connection;
+    GError *error;
+    DBusGProxy *proxy;
+  
+    g_type_init ();
+
+    error = NULL;
+    connection = dbus_g_bus_get (DBUS_BUS_SESSION, &error);
+  if (connection == NULL)
+    {
+      g_printerr ("Failed to open connection to bus: %s\n", error->message);
+      g_error_free (error);
+    }
+
+    proxy = dbus_g_proxy_new_for_name (connection, "org.xpud.vkb", "/", "local.VkbServer");
+
+    error = NULL;
+  if (!dbus_g_proxy_call (proxy, "focusout", &error, G_TYPE_INVALID))
+    {
+      /* Just do demonstrate remote exceptions versus regular GError */
+      if (error->domain == DBUS_GERROR && error->code == DBUS_GERROR_REMOTE_EXCEPTION)
+        g_printerr ("Caught remote method exception %s: %s",
+	            dbus_g_error_get_name (error),
+	            error->message);
+      else
+        g_printerr ("Error: %s\n", error->message);
+      g_error_free (error);
+    }
     ScimBridgeClientIMContext *imcontext = SCIM_BRIDGE_CLIENT_IMCONTEXT (context);
     focused_widget = NULL;
 

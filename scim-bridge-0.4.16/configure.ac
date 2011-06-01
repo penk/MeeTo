@@ -96,7 +96,7 @@ if test "$SCIM_BRIDGE_HAS_QT3" = "yes"; then
   enable_qt3_immodule="yes";
 fi
 
-PKG_CHECK_MODULES(QT4, [QtGui >= 4.0, QtCore >= 4.0],
+PKG_CHECK_MODULES(QT4, [QtGui >= 4.0, QtCore >= 4.0, QtDBus >= 4.0],
 			[SCIM_BRIDGE_HAS_QT4=yes],
 			[SCIM_BRIDGE_HAS_QT4=no])
 

@@ -413,7 +413,7 @@ void ScimBridgeClientIMContextImpl::focus_in ()
 
 
     QDBusInterface iface("org.xpud.vkb", "/", "local.VkbServer", QDBusConnection::sessionBus());
-   if (iface.isValid()) iface.call("focusin");
+   if (iface.isValid()) iface.call("show");
 
     if (focused_imcontext != NULL && focused_imcontext != this) focused_imcontext->focus_out ();
     focused_imcontext = this;
@@ -439,7 +439,7 @@ void ScimBridgeClientIMContextImpl::focus_out ()
 
 
     QDBusInterface iface("org.xpud.vkb", "/", "local.VkbServer", QDBusConnection::sessionBus());
-   if (iface.isValid()) iface.call("focusout");
+   if (iface.isValid()) iface.call("hide");
 
     if (focused_imcontext != this) return;
 

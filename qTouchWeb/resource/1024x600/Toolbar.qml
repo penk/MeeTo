@@ -44,6 +44,13 @@ Rectangle {
     }
 
     Image {
+        id: indicator
+        source: ":images/pressed_indicator.png"
+        visible: false
+        z: 2
+    }
+
+    Image {
         id: back
         source: ":images/back.png"
         anchors.left: parent.left
@@ -53,6 +60,8 @@ Rectangle {
         MouseArea {
             anchors.fill: parent
             onClicked: toolbar.backClicked();
+            onPressed: { indicator.visible = true; indicator.x = mouseX-50; indicator.y = mouseY-50; } 
+            onReleased: { indicator.visible = false; } 
         }
     }
 
@@ -66,6 +75,8 @@ Rectangle {
         MouseArea {
             anchors.fill: parent
             onClicked: toolbar.forwardClicked();
+            onPressed: { indicator.visible = true; indicator.x = mouseX-2; indicator.y = mouseY-50; } 
+            onReleased: { indicator.visible = false; } 
         }
     }
 
@@ -79,6 +90,8 @@ Rectangle {
         MouseArea {
             anchors.fill: parent
             onClicked: toolbar.optionsClicked();
+            onPressed: { indicator.visible = true; indicator.x = mouseX+46; indicator.y = mouseY-50; } 
+            onReleased: { indicator.visible = false; } 
         }
     }
 
@@ -90,6 +103,11 @@ Rectangle {
         //anchors.rightMargin: 12;
         //anchors.leftMargin: 16;
         anchors.verticalCenter: parent.verticalCenter
+        MouseArea {
+            anchors.fill: parent
+            onPressed: { indicator.visible = true; indicator.x = mouseX+94; indicator.y = mouseY-50; } 
+            onReleased: { indicator.visible = false; } 
+        }
     }
 
     Image {
@@ -101,8 +119,8 @@ Rectangle {
         //anchors.margins: 10
         MouseArea {
             anchors.fill: parent
-            //onPressed: add.source = ":images/bt_browser_bookmark.png"
-            //onReleased: add.source = ":images/bt_browser_add.png"
+            onPressed: { indicator.visible = true; indicator.x = mouseX+142; indicator.y = mouseY-50; } 
+            onReleased: { indicator.visible = false; } 
         }
     }
 

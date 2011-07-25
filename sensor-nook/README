@@ -1,0 +1,6 @@
+QtMobility Sensor Plugin for NOOK Color 
+
+Derivated from n900 plugin, 
+should be build with qtmobility-1.1.0 under: 
+./plugins/sensors/nook/
+

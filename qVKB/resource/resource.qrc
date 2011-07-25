@@ -1,5 +1,6 @@
 <RCC>
 <qresource>
+    <file>tock.wav</file>
     <file>layout.qml</file>
     <file>Button.qml</file>
     <file>image/keyboard-default.png</file>

@@ -1,0 +1,38 @@
+<RCC>
+<qresource>
+    <file>main.qml</file>
+    <file>resource/Button.qml</file>
+    <file>resource/FlickableWebView.qml</file>
+    <file>resource/Header.qml</file>
+    <file>resource/ScrollBar.qml</file>
+    <file>resource/UrlInput.qml</file>
+    <file>resource/TabView.qml</file>
+    <file>resource/TabViewItem.qml</file>
+
+    <file>resource/images/inputtext_progress.png</file>
+    <file>resource/images/inputtext.png</file>
+    <file>resource/images/inputtext_portrait.png</file>
+
+    <file>resource/images/searchbox.png</file>
+    <file>resource/images/searchbox_ext.png</file>
+    <file>resource/images/searchbox_portrait.png</file>
+    <file>resource/images/searchbox_ext_portrait.png</file>
+
+    <file>resource/images/add.png</file>
+    <file>resource/images/bookmark.png</file>
+    <file>resource/images/tab.png</file>
+    <file>resource/images/forward.png</file>
+    <file>resource/images/back.png</file>
+
+    <file>resource/images/bt_browser_clear.png</file>
+    <file>resource/images/bt_browser_stop.png</file>
+    <file>resource/images/bt_browser_reload.png</file>
+
+    <file>resource/images/UIButtonBarPressedIndicator.png</file>
+    <file>resource/images/toolbar.png</file>
+    <file>resource/images/shadow.png</file>
+    <file>resource/images/UIScrollerShadowFill.png</file>
+    <file>resource/images/UIScrollerShadowFillReverted.png</file>
+    <file>resource/images/UIStockImageScrollViewTexturedBackgroundColor.png</file>
+</qresource>
+</RCC>

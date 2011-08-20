@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <entry>
+    <title>IMG1</title>
+    <content>src=&quot;http://../Marketing/110b.png&quot; width=&quot;160&quot; height=&quot;240&quot;
+   </content>
+  </entry>
+
+  <entry>
+    <title>IMG2</title>
+    <content>src=&quot;http://../Marketing/130a.png&quot; width=&quot;160&quot; height=&quot;240&quot;
+   </content>
+  </entry>
+
+  <entry>
+    <title>IMG3</title>
+    <content>src=&quot;http://../Marketing/130b.png&quot; width=&quot;160&quot; height=&quot;240&quot;
+   </content>
+  </entry>
+
+  <entry>
+    <title>IMG4</title>
+    <content>src=&quot;http://../Marketing/131a.png&quot; width=&quot;160&quot; height=&quot;240&quot;
+   </content>
+  </entry>
+
+  <entry>
+    <title>IMG5</title>
+    <content>src=&quot;http://../Marketing/131b.png&quot; width=&quot;160&quot; height=&quot;240&quot;
+   </content>
+  </entry>
+
+  <entry>
+    <title>IMG6</title>
+    <content>src=&quot;http://../Marketing/132a.png&quot; width=&quot;160&quot; height=&quot;240&quot;
+   </content>
+  </entry>
+
+  <entry>
+    <title>IMG7</title>
+    <content>src=&quot;http://../Marketing/133b.png&quot; width=&quot;160&quot; height=&quot;240&quot;
+   </content>
+  </entry>
+
+  <entry>
+    <title>IMG9</title>
+    <content>src=&quot;http://../Marketing/138b.png&quot; width=&quot;160&quot; height=&quot;240&quot;
+   </content>
+  </entry>
+
+  <entry>
+    <title>IMG10</title>
+    <content>src=&quot;http://../Marketing/143b.png&quot; width=&quot;160&quot; height=&quot;240&quot;
+   </content>
+  </entry>
+
+  <entry>
+    <title>IMG12</title>
+    <content>src=&quot;http://../Marketing/143d.png&quot; width=&quot;160&quot; height=&quot;240&quot;
+   </content>
+  </entry>
+
+  <entry>
+    <title>IMG13</title>
+    <content>src=&quot;http://../Marketing/143e.png&quot; width=&quot;160&quot; height=&quot;240&quot;
+   </content>
+  </entry>
+
+  <entry>
+    <title>IMG14</title>
+    <content>src=&quot;http://../Marketing/143f.png&quot; width=&quot;160&quot; height=&quot;240&quot;
+   </content>
+  </entry>
+
+  <entry>
+    <title>IMG15</title>
+    <content>src=&quot;http://../Marketing/146a.png&quot; width=&quot;160&quot; height=&quot;240&quot;
+   </content>
+  </entry>
+
+  <entry>
+    <title>IMG16</title>
+    <content>src=&quot;http://../Marketing/146b.png&quot; width=&quot;160&quot; height=&quot;240&quot;
+   </content>
+  </entry>
+
+  <entry>
+    <title>IMG17</title>
+    <content>src=&quot;http://../Marketing/147a.png&quot; width=&quot;160&quot; height=&quot;240&quot;
+   </content>
+  </entry>
+
+  <entry>
+    <title>IMG18</title>
+    <content>src=&quot;http://../Marketing/147b.png&quot; width=&quot;160&quot; height=&quot;240&quot;
+   </content>
+  </entry>
+
+  <entry>
+    <title>IMG19</title>
+    <content>src=&quot;http://../Marketing/148a.png&quot; width=&quot;160&quot; height=&quot;240&quot;
+   </content>
+  </entry>
+
+  <entry>
+    <title>IMG20</title>
+    <content>src=&quot;http://../Marketing/148b.png&quot; width=&quot;160&quot; height=&quot;240&quot;
+   </content>
+  </entry>
+
+  <entry>
+    <title>IMG21</title>
+    <content>src=&quot;http://../Marketing/149a.png&quot; width=&quot;160&quot; height=&quot;240&quot;
+   </content>
+  </entry>
+
+</feed>

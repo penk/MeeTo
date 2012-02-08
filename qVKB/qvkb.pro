@@ -1,7 +1,10 @@
 TEMPLATE = app
 TARGET = qvkb 
 
-QT += declarative dbus
+QT += declarative dbus 
+
+CONFIG += mobility
+MOBILITY = multimedia
 
 HEADERS +=  src/sendkey.h \ 
             src/vkbserver.h \

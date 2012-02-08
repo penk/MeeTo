@@ -12,6 +12,12 @@ MainWindow::MainWindow()
 
     QDeclarativeContext *context = engine()->rootContext();
     context->setContextProperty("Keyboard", &keyboard);
+
+    QPalette palette;
+    palette.setColor(QPalette::Base, Qt::transparent);
+
+    setPalette(palette);
+    setAttribute(Qt::WA_TranslucentBackground, true);
     setSource(QUrl("qrc:/layout.qml"));
 
     rootItem = qobject_cast<QDeclarativeItem *>(rootObject());

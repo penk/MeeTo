@@ -12,10 +12,15 @@ class VkbServer: public QObject
 public:
     VkbServer(QObject *parent = 0) : QObject(parent) { 
 
-    view.setGeometry(0, 248, 1024, 352);
+    view.setGeometry(0, 416, 1024, 352); // 600 - 352 = 248; 
+
     view.setWindowFlags(Qt::FramelessWindowHint|
         Qt::WindowStaysOnTopHint|Qt::X11BypassWindowManagerHint);
     view.setFocusPolicy(Qt::NoFocus);
+
+    view.setAttribute(Qt::WA_TranslucentBackground, true);
+//    view.setStyleSheet("background:transparent;");
+
     view.show();
 
     qDebug() << view.winId();

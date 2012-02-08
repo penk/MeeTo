@@ -5,12 +5,22 @@ Item {
     id: keyboard
     width: 1024
     height: 352
+
     objectName: "keyboard"
-    PropertyAnimation { id: hide; target: keyboard; properties: "height"; to: "0"; duration: 50; easing.type: Easing.InOutQuad; }
-    PropertyAnimation { id: show; target: keyboard; properties: "height"; to: "352"; duration: 50; easing.type: Easing.InOutQuad; }
+
+    SequentialAnimation {
+        id: show
+        PropertyAnimation { target: keyboard; properties: "height"; to: "352"; duration: 50; easing.type: Easing.InOutQuad; }
+        PropertyAnimation { target: keyboard; properties: "y"; to: "0"; }
+    }
+    SequentialAnimation {
+         id: hide
+         PropertyAnimation { target: keyboard; properties: "y"; to: "352"; duration: 400; easing.type: Easing.InOutQuad; }
+         PropertyAnimation { target: keyboard; properties: "height"; to: "0"; }
+     }
 
     function toggle() {
-        if (keyboard.height == 0) show.start();
+        if (keyboard.y == 352) show.start();
         else hide.start();
     }
     function focusin() { show.start(); }
@@ -18,6 +28,7 @@ Item {
 
     Rectangle {
         id: layout_default
+        color: "transparent"
 
         Image {
             source: ":image/keyboard-default.png"
@@ -172,7 +183,7 @@ Item {
             Button {
                 type: "leftpun"
                 x: 142; y: 268; height: 75; width: 124
-                onClicked: { layout_default.visible = true; layout_default.visible = false; } 
+                onClicked: { layout_default.visible = true; } //layout_default.visible = false; } 
             }
 
             Button {

@@ -10,16 +10,26 @@
 #include <QX11Info>
 #include <fakekey/fakekey.h>
 
+#include <QMediaPlayer>
+
+
 class Keyboard : public QObject
 {
     Q_OBJECT
 public:
     Q_INVOKABLE bool sendKey(const QString &msg) {
 
+    QMediaPlayer *player;
+    player = new QMediaPlayer;
+
+    player->setMedia(QUrl::fromLocalFile("/usr/lib/mlauncher/tock.wav"));
+    player->setVolume(50);
+    player->play();
+
+//    qDebug() << player->error();
+
     FakeKey *fakekey;
     fakekey = fakekey_init(QX11Info::display());
-
-    QByteArray array = msg.toUtf8();
 
     if(msg.startsWith(":enter")){
         fakekey_press_keysym(fakekey, XK_Return, 0);
@@ -69,11 +79,9 @@ public:
         return 0;
     }
 
-    for (int i = 0; i < array.length(); i++){
-        char u = array.at(i);
-        fakekey_press(fakekey, (const unsigned char*)&u, -1, 0);
-        fakekey_release(fakekey);
-    }
+    QByteArray array = msg.toUtf8();
+    fakekey_press(fakekey, (unsigned char *)(array.constData()), array.length(), 0);
+    fakekey_release(fakekey);
 
     return 0;
     }
